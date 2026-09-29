@@ -272,8 +272,8 @@ body {
         </button>
 
         <button id="pink"
-            onclick="setCar('💗')">
-            💗 HỒNG DỄ THƯƠNG
+            onclick="setCar('🚘')">
+            🚘 HỒNG DỄ THƯƠNG
         </button>
     </div>
 
