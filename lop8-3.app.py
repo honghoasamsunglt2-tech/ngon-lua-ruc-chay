@@ -293,4 +293,12 @@ button {
 
         <button id="pink"
             onclick="setCar('💗')">
-            💗 HỒNG DỄ THƯƠ
+            💗 HỒNG DỄ THƯƠNG
+            </html>
+"""
+
+components.html(
+    game,
+    height=850,
+    scrolling=False
+)
