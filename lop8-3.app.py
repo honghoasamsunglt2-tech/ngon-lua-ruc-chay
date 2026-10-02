@@ -113,4 +113,769 @@ body {
     height: 90px;
     background: white;
     opacity: .8;
-    animation: roadMove linear
+    animation: roadMove linear infinite;
+}
+
+.lane1 {
+    left: 33.33%;
+}
+
+.lane2 {
+    left: 66.66%;
+}
+
+@keyframes roadMove {
+    from {
+        transform: translateY(-120px);
+    }
+    to {
+        transform: translateY(950px);
+    }
+}
+
+/* PLAYER */
+#player {
+    position: absolute;
+    width: 65px;
+    height: 105px;
+    font-size: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    user-select: none;
+    transition: transform .05s linear;
+}
+
+/* ENEMY */
+.enemy {
+    position: absolute;
+    width: 62px;
+    height: 100px;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+}
+
+/* TOP BAR */
+#topBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    pointer-events: none;
+}
+
+.info {
+    background: #000000aa;
+    padding: 8px 13px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#pauseButton {
+    pointer-events: auto;
+    border: none;
+    width: 48px;
+    height: 45px;
+    border-radius: 12px;
+    background: #000000cc;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+/* PAUSE */
+#pauseScreen,
+#gameOver {
+    position: absolute;
+    inset: 0;
+    z-index: 45;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #000000cc;
+}
+
+.panel {
+    background: #171717;
+    border: 2px solid #ff5a00;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 80%;
+    max-width: 380px;
+    box-shadow: 0 0 30px #ff4d0044;
+}
+
+.panel h2 {
+    color: #ff7417;
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.panel button {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.continue {
+    background: #ff7a00;
+    color: white;
+}
+
+.home {
+    background: #333;
+    color: white;
+}
+
+#gameOver h1 {
+    color: #ff4b21;
+}
+
+/* MOBILE CONTROL */
+#controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    z-index: 35;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.controlBtn {
+    width: 58px;
+    height: 52px;
+    border: none;
+    border-radius: 14px;
+    background: #000000aa;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    touch-action: none;
+}
+
+.controlBtn:active {
+    background: #ff4d00;
+}
+
+/* MUSIC */
+#musicButton {
+    position: absolute;
+    right: 75px;
+    top: 8px;
+    z-index: 41;
+    width: 48px;
+    height: 45px;
+    border: none;
+    border-radius: 12px;
+    background: #000000cc;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+    <!-- MENU -->
+    <div id="menu">
+        <div class="title">🔥 NGỌN LỬA<br>RỰC CHÁY 🔥</div>
+        <div class="subtitle">🏎️ Đường đua sinh tử 🏎️</div>
+
+        <button class="menuButton" onclick="startGame('easy')">
+            🟢 DỄ
+        </button>
+
+        <button class="menuButton" onclick="startGame('medium')">
+            🟡 VỪA
+        </button>
+
+        <button class="menuButton" onclick="startGame('hard')">
+            🔴 KHÓ
+        </button>
+    </div>
+
+    <!-- ROAD -->
+    <div id="road">
+        <div class="lane lane1"></div>
+        <div class="lane lane2"></div>
+    </div>
+
+    <!-- PLAYER -->
+    <div id="player">🚗</div>
+
+    <!-- TOP -->
+    <div id="topBar">
+        <div class="info">
+            ❤️ <span id="lives">4</span>
+            &nbsp;&nbsp;
+            ⭐ <span id="score">0</span>
+        </div>
+
+        <button id="pauseButton" onclick="openPause()">☰</button>
+    </div>
+
+    <button id="musicButton" onclick="toggleMusic()">🎵</button>
+
+    <!-- MOBILE CONTROLS -->
+    <div id="controls">
+        <button class="controlBtn" id="up">⬆️</button>
+        <button class="controlBtn" id="left">⬅️</button>
+        <button class="controlBtn" id="down">⬇️</button>
+        <button class="controlBtn" id="right">➡️</button>
+    </div>
+
+    <!-- PAUSE -->
+    <div id="pauseScreen">
+        <div class="panel">
+            <h2>⏸️ TẠM DỪNG</h2>
+
+            <button class="continue" onclick="resumeGame()">
+                ▶️ Tiếp tục
+            </button>
+
+            <button class="home" onclick="backToMenu()">
+                🏠 Về menu chính
+            </button>
+        </div>
+    </div>
+
+    <!-- GAME OVER -->
+    <div id="gameOver">
+        <div class="panel">
+            <h2>😔 GAME OVER</h2>
+
+            <p>Điểm: <b id="finalScore">0</b></p>
+            <p>Kỷ lục: <b id="record">0</b></p>
+
+            <button class="continue" onclick="restartGame()">
+                🔄 Chơi lại
+            </button>
+
+            <button class="home" onclick="backToMenu()">
+                🏠 Menu chính
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- NHẠC -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const game = document.getElementById("game");
+const player = document.getElementById("player");
+const menu = document.getElementById("menu");
+const pauseScreen = document.getElementById("pauseScreen");
+const gameOver = document.getElementById("gameOver");
+
+const scoreText = document.getElementById("score");
+const livesText = document.getElementById("lives");
+const finalScore = document.getElementById("finalScore");
+const recordText = document.getElementById("record");
+
+const bgMusic = document.getElementById("bgMusic");
+
+let running = false;
+let paused = false;
+
+let score = 0;
+let lives = 4;
+
+let playerX = 0;
+let playerY = 0;
+
+let enemies = [];
+let enemyTimer = 0;
+
+let speed = 4;
+let difficulty = "easy";
+
+let keys = {};
+
+let record = Number(localStorage.getItem("ngonLuaRecord") || 0);
+
+
+/* START GAME */
+function startGame(level) {
+
+    difficulty = level;
+
+    if (level === "easy") {
+        speed = 4;
+    }
+
+    if (level === "medium") {
+        speed = 6;
+    }
+
+    if (level === "hard") {
+        speed = 8;
+    }
+
+    menu.style.display = "none";
+    gameOver.style.display = "none";
+    pauseScreen.style.display = "none";
+
+    score = 0;
+    lives = 4;
+
+    scoreText.textContent = score;
+    livesText.textContent = lives;
+
+    clearEnemies();
+
+    playerX = game.clientWidth / 2 - 32;
+    playerY = game.clientHeight - 180;
+
+    player.style.left = playerX + "px";
+    player.style.top = playerY + "px";
+
+    running = true;
+    paused = false;
+
+    bgMusic.currentTime = 0;
+
+    bgMusic.play().catch(() => {});
+
+    requestAnimationFrame(gameLoop);
+}
+
+
+/* GAME LOOP */
+let lastTime = 0;
+
+function gameLoop(time) {
+
+    if (!running) return;
+
+    if (paused) {
+        requestAnimationFrame(gameLoop);
+        return;
+    }
+
+    let dt = (time - lastTime) / 16.67;
+
+    if (!lastTime) dt = 1;
+
+    lastTime = time;
+
+    movePlayer(dt);
+    moveEnemies(dt);
+    spawnEnemy();
+
+    score += 0.03 * dt;
+
+    scoreText.textContent = Math.floor(score);
+
+    requestAnimationFrame(gameLoop);
+}
+
+
+/* PLAYER MOVEMENT */
+function movePlayer(dt) {
+
+    const amount = 6 * dt;
+
+    if (keys["ArrowLeft"] || keys["a"]) {
+        playerX -= amount;
+    }
+
+    if (keys["ArrowRight"] || keys["d"]) {
+        playerX += amount;
+    }
+
+    if (keys["ArrowUp"] || keys["w"]) {
+        playerY -= amount;
+    }
+
+    if (keys["ArrowDown"] || keys["s"]) {
+        playerY += amount;
+    }
+
+    const minX = game.clientWidth * 0.16 + 8;
+    const maxX = game.clientWidth * 0.84 - 70;
+
+    const minY = 70;
+    const maxY = game.clientHeight - 120;
+
+    playerX = Math.max(minX, Math.min(maxX, playerX));
+    playerY = Math.max(minY, Math.min(maxY, playerY));
+
+    player.style.left = playerX + "px";
+    player.style.top = playerY + "px";
+}
+
+
+/* SPAWN ENEMY */
+function spawnEnemy() {
+
+    enemyTimer++;
+
+    let spawnRate = 70;
+
+    if (difficulty === "medium") {
+        spawnRate = 55;
+    }
+
+    if (difficulty === "hard") {
+        spawnRate = 42;
+    }
+
+    if (enemyTimer < spawnRate) return;
+
+    enemyTimer = 0;
+
+    const enemy = document.createElement("div");
+
+    enemy.className = "enemy";
+
+    // Xe vàng
+    enemy.textContent = "🚕";
+
+    const roadLeft = game.clientWidth * 0.16;
+    const roadWidth = game.clientWidth * 0.68;
+
+    const lane = Math.floor(Math.random() * 3);
+
+    const laneWidth = roadWidth / 3;
+
+    enemy.x =
+        roadLeft +
+        lane * laneWidth +
+        laneWidth / 2 -
+        31;
+
+    enemy.y = -120;
+
+    enemy.style.left = enemy.x + "px";
+    enemy.style.top = enemy.y + "px";
+
+    game.appendChild(enemy);
+
+    enemies.push(enemy);
+}
+
+
+/* ENEMY MOVEMENT */
+function moveEnemies(dt) {
+
+    for (let i = enemies.length - 1; i >= 0; i--) {
+
+        const enemy = enemies[i];
+
+        enemy.y += speed * dt;
+
+        enemy.style.top = enemy.y + "px";
+
+        if (checkCollision(player, enemy)) {
+
+            enemy.remove();
+            enemies.splice(i, 1);
+
+            loseLife();
+
+            continue;
+        }
+
+        if (enemy.y > game.clientHeight + 120) {
+
+            enemy.remove();
+            enemies.splice(i, 1);
+        }
+    }
+}
+
+
+/* COLLISION */
+function checkCollision(a, b) {
+
+    const ar = a.getBoundingClientRect();
+    const br = b.getBoundingClientRect();
+
+    return !(
+        ar.right < br.left + 10 ||
+        ar.left + 10 > br.right ||
+        ar.bottom < br.top + 10 ||
+        ar.top + 10 > br.bottom
+    );
+}
+
+
+/* LOSE LIFE */
+function loseLife() {
+
+    lives--;
+
+    livesText.textContent = lives;
+
+    playLoseSound();
+
+    player.style.transform = "scale(1.2)";
+
+    setTimeout(() => {
+        player.style.transform = "scale(1)";
+    }, 150);
+
+    if (lives <= 0) {
+        endGame();
+    }
+}
+
+
+/* CLEAR ENEMIES */
+function clearEnemies() {
+
+    enemies.forEach(e => e.remove());
+
+    enemies = [];
+}
+
+
+/* GAME OVER */
+function endGame() {
+
+    running = false;
+
+    bgMusic.pause();
+
+    finalScore.textContent = Math.floor(score);
+
+    if (Math.floor(score) > record) {
+
+        record = Math.floor(score);
+
+        localStorage.setItem(
+            "ngonLuaRecord",
+            record
+        );
+    }
+
+    recordText.textContent = record;
+
+    gameOver.style.display = "flex";
+}
+
+
+/* RESTART */
+function restartGame() {
+
+    gameOver.style.display = "none";
+
+    startGame(difficulty);
+}
+
+
+/* PAUSE */
+function openPause() {
+
+    if (!running) return;
+
+    paused = true;
+
+    pauseScreen.style.display = "flex";
+
+    bgMusic.pause();
+}
+
+
+/* RESUME */
+function resumeGame() {
+
+    paused = false;
+
+    pauseScreen.style.display = "none";
+
+    bgMusic.play().catch(() => {});
+
+    lastTime = performance.now();
+}
+
+
+/* BACK TO MENU */
+function backToMenu() {
+
+    running = false;
+    paused = false;
+
+    clearEnemies();
+
+    bgMusic.pause();
+
+    pauseScreen.style.display = "none";
+    gameOver.style.display = "none";
+
+    menu.style.display = "flex";
+}
+
+
+/* MUSIC */
+function toggleMusic() {
+
+    if (bgMusic.paused) {
+
+        bgMusic.play().catch(() => {});
+
+        document.getElementById("musicButton").textContent = "🎵";
+
+    } else {
+
+        bgMusic.pause();
+
+        document.getElementById("musicButton").textContent = "🔇";
+    }
+}
+
+
+/* KEYBOARD */
+document.addEventListener("keydown", function(e) {
+
+    keys[e.key] = true;
+
+    if (
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "]
+        .includes(e.key)
+    ) {
+        e.preventDefault();
+    }
+
+    if (e.key === "Escape" && running) {
+
+        if (paused) {
+            resumeGame();
+        } else {
+            openPause();
+        }
+    }
+});
+
+
+document.addEventListener("keyup", function(e) {
+
+    keys[e.key] = false;
+});
+
+
+/* MOBILE BUTTONS */
+function holdButton(id, key) {
+
+    const button = document.getElementById(id);
+
+    button.addEventListener("pointerdown", e => {
+
+        e.preventDefault();
+
+        keys[key] = true;
+    });
+
+    button.addEventListener("pointerup", e => {
+
+        e.preventDefault();
+
+        keys[key] = false;
+    });
+
+    button.addEventListener("pointerleave", () => {
+
+        keys[key] = false;
+    });
+
+    button.addEventListener("pointercancel", () => {
+
+        keys[key] = false;
+    });
+}
+
+holdButton("up", "ArrowUp");
+holdButton("down", "ArrowDown");
+holdButton("left", "ArrowLeft");
+holdButton("right", "ArrowRight");
+
+
+/* LOSE SOUND */
+function playLoseSound() {
+
+    try {
+
+        const ctx =
+            new (window.AudioContext ||
+            window.webkitAudioContext)();
+
+        const notes = [
+            392,
+            330,
+            262
+        ];
+
+        notes.forEach((freq, i) => {
+
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = "triangle";
+
+            osc.frequency.value = freq;
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            gain.gain.setValueAtTime(
+                0.12,
+                ctx.currentTime + i * 0.12
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                ctx.currentTime + i * 0.12 + 0.18
+            );
+
+            osc.start(
+                ctx.currentTime + i * 0.12
+            );
+
+            osc.stop(
+                ctx.currentTime + i * 0.12 + 0.2
+            );
+        });
+
+    } catch(e) {}
+}
+
+</script>
+
+</body>
+</html>
+"""
+
+components.html(
+    game,
+    height=850,
+    scrolling=False
+)
