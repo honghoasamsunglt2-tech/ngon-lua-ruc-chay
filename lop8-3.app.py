@@ -1742,12 +1742,14 @@ function playLoseSound() {
         );  
   
     } catch(e) {}  
-}  
-  
-</script>  </body>  
-</html>  
-"""  components.html(
-game,
-height=800,
-scrolling=False
+}
+</script>
+</body>
+</html>
+"""
+
+components.html(
+    game,
+    height=800,
+    scrolling=False
 )
