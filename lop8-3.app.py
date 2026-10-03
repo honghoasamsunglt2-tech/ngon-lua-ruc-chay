@@ -1204,11 +1204,11 @@ function spawnEnemy() {
   
     if (selectedCar === "red") {  
   
-        enemy.textContent = "🚕,🚧,🛻,🚚,🚓";  
+        enemy.textContent = "🚕";  
   
     } else {  
   
-        enemy.textContent = "🚗, 🚧,🚚,🚛,🛻";  
+        enemy.textContent = "🚗";  
     }  
   
   
