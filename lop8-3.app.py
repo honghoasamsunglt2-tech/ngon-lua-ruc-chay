@@ -797,9 +797,9 @@ preload="auto"
 
 > 
 
-<source  
-    src="music.mp3"  
-    type="audio/mpeg"  
+<source
+    src="music.mp3"
+    type="audio/mpeg"
 >
 
 </audio>  <script>  
@@ -1204,11 +1204,11 @@ function spawnEnemy() {
   
     if (selectedCar === "red") {  
   
-        enemy.textContent = "🚕";  
+        enemy.textContent = "🚕,🚧,🛻,🚚,🚓";  
   
     } else {  
   
-        enemy.textContent = "🚗";  
+        enemy.textContent = "🚗, 🚧,🚚,🚛,🛻";  
     }  
   
   
