@@ -264,7 +264,9 @@ html,body{
     width:80%;
 
     top:58px;
-    bottom:115px;
+
+    /* ĐƯỜNG NGẮN LẠI */
+    bottom:150px;
 
     background:
         linear-gradient(
@@ -2050,6 +2052,110 @@ holdButton(
 holdButton(
     document.getElementById("downBtn"),
     "down"
+);
+
+
+/* ================= BÀN PHÍM LAPTOP ================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(!running || paused)
+            return;
+
+        const key =
+            e.key.toLowerCase();
+
+        if(
+            key === "arrowleft" ||
+            key === "a"
+        ){
+
+            moveLeft = true;
+            e.preventDefault();
+
+        }
+
+        if(
+            key === "arrowright" ||
+            key === "d"
+        ){
+
+            moveRight = true;
+            e.preventDefault();
+
+        }
+
+        if(
+            key === "arrowup" ||
+            key === "w"
+        ){
+
+            moveUp = true;
+            e.preventDefault();
+
+        }
+
+        if(
+            key === "arrowdown" ||
+            key === "s"
+        ){
+
+            moveDown = true;
+            e.preventDefault();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keyup",
+    function(e){
+
+        const key =
+            e.key.toLowerCase();
+
+
+        if(
+            key === "arrowleft" ||
+            key === "a"
+        ){
+
+            moveLeft = false;
+
+        }
+
+        if(
+            key === "arrowright" ||
+            key === "d"
+        ){
+
+            moveRight = false;
+
+        }
+
+        if(
+            key === "arrowup" ||
+            key === "w"
+        ){
+
+            moveUp = false;
+
+        }
+
+        if(
+            key === "arrowdown" ||
+            key === "s"
+        ){
+
+            moveDown = false;
+
+        }
+
+    }
 );
 
 
