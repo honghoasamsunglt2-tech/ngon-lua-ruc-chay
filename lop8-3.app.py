@@ -15,45 +15,44 @@ game = r"""
 
 <style>
 
-* {
-    box-sizing: border-box;
-    user-select: none;
-    -webkit-user-select: none;
+*{
+    box-sizing:border-box;
+    user-select:none;
+    -webkit-user-select:none;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background: #050505;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+html,body{
+    margin:0;
+    padding:0;
+    background:#050505;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
 }
 
-#game {
-    width: 100%;
-    max-width: 430px;
-    height: 780px;
-    margin: auto;
-    position: relative;
-    overflow: hidden;
-
+#game{
+    width:100%;
+    max-width:430px;
+    height:780px;
+    margin:auto;
+    position:relative;
+    overflow:hidden;
     background:
-        radial-gradient(circle at center, #321000, #080808 70%);
+        radial-gradient(circle at center,#321000,#080808 70%);
 }
 
 /* ================= MENU ================= */
 
-#menu {
-    position: absolute;
-    inset: 0;
-    z-index: 100;
+#menu{
+    position:absolute;
+    inset:0;
+    z-index:100;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
-    padding: 20px;
+    padding:20px;
 
     background:
         radial-gradient(
@@ -64,13 +63,13 @@ html, body {
         );
 }
 
-.title {
-    font-size: 43px;
-    font-weight: 900;
-    font-style: italic;
-    text-align: center;
+.title{
+    font-size:43px;
+    font-weight:900;
+    font-style:italic;
+    text-align:center;
 
-    color: #ff4a00;
+    color:#ff4a00;
 
     text-shadow:
         0 0 5px #ff0000,
@@ -78,208 +77,243 @@ html, body {
         0 0 25px #ff5100,
         0 0 45px #ff1800;
 
-    animation: heartbeat 1.5s infinite;
+    animation:heartbeat 1.5s infinite;
 
-    line-height: 1.05;
-    margin-bottom: 10px;
+    line-height:1.05;
+    margin-bottom:10px;
 }
 
-@keyframes heartbeat {
-
-    0% {
-        transform: scale(1);
-    }
-
-    15% {
-        transform: scale(1.08);
-    }
-
-    30% {
-        transform: scale(1);
-    }
-
-    45% {
-        transform: scale(1.06);
-    }
-
-    60% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+@keyframes heartbeat{
+    0%{transform:scale(1);}
+    15%{transform:scale(1.08);}
+    30%{transform:scale(1);}
+    45%{transform:scale(1.06);}
+    60%{transform:scale(1);}
+    100%{transform:scale(1);}
 }
 
-.subtitle {
-    color: #ffc7a1;
-    font-size: 15px;
-    font-style: italic;
-    margin-bottom: 22px;
+.subtitle{
+    color:#ffc7a1;
+    font-size:15px;
+    font-style:italic;
+    margin-bottom:22px;
 }
 
-.musicBox {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.musicBox{
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-    background: #3b1000dd;
+    background:#3b1000dd;
+    border:2px solid #a93200;
+    border-radius:18px;
 
-    border: 2px solid #a93200;
-    border-radius: 18px;
+    padding:10px 16px;
+    margin-bottom:18px;
 
-    padding: 10px 16px;
-    margin-bottom: 18px;
-
-    box-shadow:
-        0 0 15px #ff330055;
+    box-shadow:0 0 15px #ff330055;
 }
 
-.musicButton {
-    border: none;
-    border-radius: 12px;
+.musicButton{
+    border:none;
+    border-radius:12px;
+    padding:9px 18px;
 
-    padding: 9px 18px;
+    background:linear-gradient(
+        135deg,
+        #ff9d00,
+        #ff2600
+    );
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff9d00,
-            #ff2600
-        );
-
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
 }
 
-.sectionTitle {
-    color: white;
-    font-size: 19px;
-    font-weight: bold;
-    margin: 8px 0;
+.sectionTitle{
+    color:white;
+    font-size:19px;
+    font-weight:bold;
+    margin:8px 0;
 }
 
-.difficulty {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
+.difficulty{
+    display:flex;
+    gap:8px;
+    margin-bottom:14px;
 }
 
-.diffButton {
-    width: 95px;
+.diffButton{
+    width:95px;
+    padding:11px 4px;
 
-    padding: 11px 4px;
+    border:2px solid #555;
+    border-radius:14px;
 
-    border: 2px solid #555;
-    border-radius: 14px;
+    background:#222;
+    color:white;
 
-    background: #222;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
+    font-size:16px;
+    font-weight:bold;
 }
 
-.diffButton.selected {
-    background:
-        linear-gradient(
-            135deg,
-            #ffad00,
-            #ff2700
-        );
+.diffButton.selected{
+    background:linear-gradient(
+        135deg,
+        #ffad00,
+        #ff2700
+    );
 
-    border-color: #ffd36a;
+    border-color:#ffd36a;
 
-    box-shadow:
-        0 0 18px #ff4300;
+    box-shadow:0 0 18px #ff4300;
 }
 
-.carChoices {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    max-width: 330px;
-
-    margin-bottom: 18px;
+.carChoices{
+    display:flex;
+    gap:10px;
+    width:100%;
+    max-width:330px;
+    margin-bottom:18px;
 }
 
-.carButton {
-    flex: 1;
+.carButton{
+    flex:1;
+    padding:13px 5px;
 
-    padding: 13px 5px;
+    border:2px solid #555;
+    border-radius:15px;
 
-    border: 2px solid #555;
-    border-radius: 15px;
+    background:#222;
+    color:white;
 
-    background: #222;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
+    font-size:16px;
+    font-weight:bold;
 }
 
-.carButton.selected {
-    background:
-        linear-gradient(
-            135deg,
-            #ffad00,
-            #ff2700
-        );
+.carButton.selected{
+    background:linear-gradient(
+        135deg,
+        #ffad00,
+        #ff2700
+    );
 
-    border-color: #ffd36a;
+    border-color:#ffd36a;
 
-    box-shadow:
-        0 0 18px #ff4300;
+    box-shadow:0 0 18px #ff4300;
 }
 
-.startButton {
-    width: 100%;
-    max-width: 340px;
+.startButton{
+    width:100%;
+    max-width:340px;
 
-    padding: 16px;
+    padding:16px;
 
-    border: none;
-    border-radius: 18px;
+    border:none;
+    border-radius:18px;
 
-    background:
-        linear-gradient(
-            90deg,
-            #ff8a00,
-            #e90000
-        );
+    background:linear-gradient(
+        90deg,
+        #ff8a00,
+        #e90000
+    );
 
-    color: white;
+    color:white;
 
-    font-size: 23px;
-    font-weight: 900;
+    font-size:23px;
+    font-weight:900;
 
-    box-shadow:
-        0 0 25px #ff300077;
+    box-shadow:0 0 25px #ff300077;
 }
 
-.recordMenu {
-    margin-top: 16px;
+.recordMenu{
+    margin-top:16px;
 
-    background: #00000077;
+    background:#00000077;
+    padding:8px 18px;
 
-    padding: 8px 18px;
+    border-radius:14px;
 
-    border-radius: 14px;
+    font-size:18px;
+}
 
-    font-size: 18px;
+/* ================= TOP BAR ================= */
+
+#topBar{
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:62px;
+
+    z-index:50;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:7px 10px;
+
+    pointer-events:none;
+
+    background:#050505ee;
+}
+
+.leftInfo{
+    display:flex;
+    gap:7px;
+    align-items:center;
+}
+
+.infoBox{
+    background:#000000cc;
+
+    border-radius:13px;
+
+    padding:8px 11px;
+
+    font-size:17px;
+    font-weight:bold;
+}
+
+.topRight{
+    display:flex;
+    gap:7px;
+    align-items:center;
+}
+
+.topButton{
+    pointer-events:auto;
+
+    width:45px;
+    height:42px;
+
+    border:none;
+    border-radius:11px;
+
+    background:#000000cc;
+
+    color:white;
+
+    font-size:23px;
 }
 
 /* ================= ROAD ================= */
 
-#road {
-    position: absolute;
+#road{
+    position:absolute;
 
-    left: 10%;
-    width: 80%;
+    left:10%;
+    width:80%;
 
-    top: 55px;
-    bottom: 55px;
+    /*
+       ĐƯỜNG ĐUA NGẮN LẠI
+       để nhìn thấy cả top bar + nút điều khiển
+    */
+    top:70px;
+    height:525px;
 
     background:
         linear-gradient(
@@ -292,327 +326,258 @@ html, body {
             #202020
         );
 
-    border-left: 5px solid #777;
-    border-right: 5px solid #777;
+    border-left:5px solid #777;
+    border-right:5px solid #777;
 
-    overflow: hidden;
+    overflow:hidden;
 }
 
-.laneLine {
-    position: absolute;
+/* 3 LÀN */
 
-    top: -120px;
+.laneLine{
+    position:absolute;
 
-    width: 5px;
-    height: 85px;
+    top:-120px;
 
-    background: white;
+    width:5px;
+    height:75px;
 
-    opacity: .75;
+    background:white;
+
+    opacity:.75;
 
     animation:
         roadMove .65s linear infinite;
 }
 
-.laneLine.one {
-    left: 33.33%;
+.laneLine.one{
+    left:33.33%;
 }
 
-.laneLine.two {
-    left: 66.66%;
+.laneLine.two{
+    left:66.66%;
 }
 
-@keyframes roadMove {
-
-    from {
-        transform: translateY(-120px);
+@keyframes roadMove{
+    from{
+        transform:translateY(-120px);
     }
 
-    to {
-        transform: translateY(900px);
+    to{
+        transform:translateY(700px);
     }
 }
 
 /* ================= PLAYER ================= */
 
-#player {
-    position: absolute;
+#player{
+    position:absolute;
 
-    width: 65px;
-    height: 75px;
+    width:65px;
+    height:75px;
 
-    font-size: 52px;
+    font-size:52px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    z-index: 30;
+    z-index:30;
 
-    touch-action: none;
+    touch-action:none;
 
-    filter:
-        drop-shadow(
-            0 5px 5px #000
-        );
+    filter:drop-shadow(
+        0 5px 5px #000
+    );
 }
 
 /* ================= OBSTACLE ================= */
 
-.obstacle {
-    position: absolute;
+.obstacle{
+    position:absolute;
 
-    width: 62px;
-    height: 70px;
+    width:62px;
+    height:70px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    font-size: 43px;
+    font-size:43px;
 
-    z-index: 20;
+    z-index:20;
 }
 
-.pothole {
-    font-size: 48px;
-}
-
-/* ================= TOP UI ================= */
-
-#topBar {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 55px;
-
-    z-index: 50;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 7px 10px;
-
-    pointer-events: none;
-}
-
-.leftInfo {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.infoBox {
-    background: #000000bb;
-
-    border-radius: 13px;
-
-    padding: 8px 11px;
-
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.topRight {
-    display: flex;
-    gap: 7px;
-}
-
-.topButton {
-    pointer-events: auto;
-
-    width: 43px;
-    height: 40px;
-
-    border: none;
-    border-radius: 11px;
-
-    background: #000000cc;
-
-    color: white;
-
-    font-size: 21px;
+.pothole{
+    font-size:48px;
 }
 
 /* ================= NÚT DI CHUYỂN ================= */
 
-#moveControls {
-    position: absolute;
+#controls{
+    position:absolute;
 
-    left: 50%;
-    bottom: 8px;
+    left:0;
+    right:0;
 
-    transform: translateX(-50%);
+    bottom:18px;
 
-    z-index: 60;
+    height:125px;
 
-    width: 185px;
-    height: 105px;
+    z-index:60;
 
-    display: grid;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    grid-template-columns:
-        55px 55px 55px;
-
-    grid-template-rows:
-        48px 48px;
-
-    gap: 5px;
-
-    justify-content: center;
-
-    touch-action: none;
+    pointer-events:auto;
 }
 
-.moveButton {
-    border: 2px solid #ff4b22;
+.controlPad{
+    width:180px;
+    height:115px;
 
-    border-radius: 12px;
+    position:relative;
+}
 
-    background:
-        linear-gradient(
-            145deg,
-            #351000,
-            #160000
-        );
+.moveButton{
+    position:absolute;
 
-    color: white;
+    width:55px;
+    height:48px;
 
-    font-size: 27px;
+    border:2px solid #ff4b16;
+    border-radius:13px;
 
-    font-weight: bold;
+    background:#170d0acc;
+
+    color:white;
+
+    font-size:25px;
+    font-weight:bold;
 
     box-shadow:
-        0 0 10px #ff2d0055;
+        0 0 12px #ff350055;
 
-    touch-action: none;
-
-    -webkit-tap-highlight-color: transparent;
+    touch-action:none;
 }
 
-.moveButton:active {
-    background:
-        linear-gradient(
-            145deg,
-            #ff6a00,
-            #d90000
-        );
-
-    transform: scale(.95);
-
-    box-shadow:
-        0 0 18px #ff3000;
+.moveButton:active{
+    background:#ff4b16;
+    transform:scale(.94);
 }
 
-/* Vị trí nút */
-
-#upButton {
-    grid-column: 2;
-    grid-row: 1;
+.up{
+    top:0;
+    left:62px;
 }
 
-#leftButton {
-    grid-column: 1;
-    grid-row: 2;
+.down{
+    bottom:0;
+    left:62px;
 }
 
-#downButton {
-    grid-column: 2;
-    grid-row: 2;
+.left{
+    top:34px;
+    left:0;
 }
 
-#rightButton {
-    grid-column: 3;
-    grid-row: 2;
+.right{
+    top:34px;
+    right:0;
 }
 
 /* ================= PAUSE ================= */
 
-#pauseScreen {
-    position: absolute;
+#pauseScreen{
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
-    z-index: 80;
+    z-index:80;
 
-    display: none;
+    display:none;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    background: #000000cc;
+    background:#000000cc;
 }
 
-.panel {
-    width: 82%;
-    max-width: 350px;
+.panel{
+    width:82%;
+    max-width:350px;
 
-    background: #171717;
+    background:#171717;
 
-    border: 2px solid #ff4d00;
+    border:2px solid #ff4d00;
 
-    border-radius: 20px;
+    border-radius:20px;
 
-    padding: 25px;
+    padding:25px;
 
-    text-align: center;
+    text-align:center;
 
-    box-shadow:
-        0 0 35px #ff300055;
+    box-shadow:0 0 35px #ff300055;
 }
 
-.panel h2 {
-    color: #ff6417;
-    font-size: 29px;
+.panel h2{
+    color:#ff6417;
+    font-size:29px;
 }
 
-.panel button {
-    width: 100%;
+.panel button{
+    width:100%;
 
-    padding: 13px;
+    padding:13px;
 
-    margin-top: 10px;
+    margin-top:10px;
 
-    border: none;
-    border-radius: 12px;
+    border:none;
+    border-radius:12px;
 
-    font-size: 17px;
-    font-weight: bold;
+    font-size:17px;
+    font-weight:bold;
 }
 
-.resume {
-    background: #ff6a00;
-    color: white;
+.resume{
+    background:#ff6a00;
+    color:white;
 }
 
-.home {
-    background: #333;
-    color: white;
+.home{
+    background:#333;
+    color:white;
 }
 
 /* ================= GAME OVER ================= */
 
-#gameOver {
-    position: absolute;
+#gameOver{
+    position:absolute;
 
-    inset: 0;
+    inset:0;
 
-    z-index: 90;
+    z-index:90;
 
-    display: none;
+    display:none;
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    background: #000000b8;
+    background:#000000bd;
 }
 
-.gameOverPanel {
-    text-align: center;
+/*
+   GAME OVER LUÔN RƠI VÀO CHÍNH GIỮA
+*/
+
+.gameOverPanel{
+    width:100%;
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 
     animation:
         fallGameOver
@@ -621,49 +586,57 @@ html, body {
         forwards;
 }
 
-@keyframes fallGameOver {
+@keyframes fallGameOver{
 
-    0% {
+    0%{
         transform:
             translateY(-500px)
-            rotate(-8deg);
-        opacity: 0;
+            rotate(-10deg);
+
+        opacity:0;
     }
 
-    55% {
+    45%{
         transform:
-            translateY(25px)
-            rotate(5deg);
-        opacity: 1;
+            translateY(30px)
+            rotate(7deg);
+
+        opacity:1;
     }
 
-    70% {
+    60%{
         transform:
-            translateY(-12px)
-            rotate(-3deg);
+            translateY(-18px)
+            rotate(-5deg);
     }
 
-    82% {
+    75%{
         transform:
-            translateY(7px)
-            rotate(2deg);
+            translateY(10px)
+            rotate(3deg);
     }
 
-    100% {
+    88%{
+        transform:
+            translateY(-4px)
+            rotate(-1deg);
+    }
+
+    100%{
         transform:
             translateY(0)
             rotate(0);
     }
 }
 
-.gameOverTitle {
-    font-size: 48px;
+.gameOverTitle{
+    font-size:48px;
 
-    font-weight: 900;
+    font-weight:900;
 
-    color: #ff2a00;
+    color:#ff2a00;
 
-    font-style: italic;
+    font-style:italic;
 
     text-shadow:
         0 0 8px #ff0000,
@@ -672,76 +645,80 @@ html, body {
 
     animation:
         shake
-        .18s
+        .15s
         .9s
-        5;
+        6;
 }
 
-@keyframes shake {
+@keyframes shake{
 
-    0% {
-        transform: translateX(0);
+    0%{
+        transform:translateX(0);
     }
 
-    25% {
-        transform: translateX(-8px);
+    25%{
+        transform:translateX(-9px);
     }
 
-    50% {
-        transform: translateX(8px);
+    50%{
+        transform:translateX(9px);
     }
 
-    75% {
-        transform: translateX(-6px);
+    75%{
+        transform:translateX(-7px);
     }
 
-    100% {
-        transform: translateX(0);
+    100%{
+        transform:translateX(0);
     }
 }
 
-.scoreFinal {
-    color: white;
+.scoreFinal{
+    color:white;
 
-    font-size: 20px;
+    font-size:20px;
 
-    margin: 10px 0 20px;
+    margin:12px 0 18px;
 }
 
-.gameOverButton {
-    border: none;
-
-    border-radius: 13px;
-
-    padding: 13px 25px;
-
-    margin: 5px;
-
-    font-size: 16px;
-
-    font-weight: bold;
+.gameOverButtons{
+    display:flex;
+    justify-content:center;
+    gap:8px;
 }
 
-.again {
-    background: #ff6500;
-    color: white;
+.gameOverButton{
+    border:none;
+
+    border-radius:13px;
+
+    padding:13px 20px;
+
+    font-size:16px;
+
+    font-weight:bold;
 }
 
-.menuBack {
-    background: #333;
-    color: white;
+.again{
+    background:#ff6500;
+    color:white;
+}
+
+.menuBack{
+    background:#333;
+    color:white;
 }
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    #game {
-        height: 780px;
+    #game{
+        height:780px;
     }
 
-    .title {
-        font-size: 38px;
+    .title{
+        font-size:38px;
     }
 
 }
@@ -768,9 +745,7 @@ html, body {
 
     <div class="musicBox">
 
-        <span>
-            🎵 NHẠC
-        </span>
+        <span>🎵 NHẠC</span>
 
         <button
             class="musicButton"
@@ -877,12 +852,13 @@ html, body {
     <div class="leftInfo">
 
         <div class="infoBox">
-            3❤️
-            <span id="lives" style="display:none;">3</span>
+            ❤️ <span id="lives">3</span>
         </div>
 
         <div class="infoBox">
+
             🎵
+
             <button
                 id="gameMusic"
                 onclick="toggleMusic()"
@@ -895,6 +871,7 @@ html, body {
             >
                 🔊
             </button>
+
         </div>
 
     </div>
@@ -919,35 +896,39 @@ html, body {
 
 <!-- ================= NÚT DI CHUYỂN ================= -->
 
-<div id="moveControls">
+<div id="controls">
 
-    <button
-        class="moveButton"
-        id="upButton"
-    >
-        ▲
-    </button>
+    <div class="controlPad">
 
-    <button
-        class="moveButton"
-        id="leftButton"
-    >
-        ◀
-    </button>
+        <button
+            class="moveButton up"
+            id="upBtn"
+        >
+            ↑
+        </button>
 
-    <button
-        class="moveButton"
-        id="downButton"
-    >
-        ▼
-    </button>
+        <button
+            class="moveButton left"
+            id="leftBtn"
+        >
+            ←
+        </button>
 
-    <button
-        class="moveButton"
-        id="rightButton"
-    >
-        ▶
-    </button>
+        <button
+            class="moveButton right"
+            id="rightBtn"
+        >
+            →
+        </button>
+
+        <button
+            class="moveButton down"
+            id="downBtn"
+        >
+            ↓
+        </button>
+
+    </div>
 
 </div>
 
@@ -992,26 +973,34 @@ html, body {
         </div>
 
         <div class="scoreFinal">
+
             ⭐ Điểm:
             <b id="finalScore">0</b>
+
             <br>
+
             🏆 Kỷ lục:
             <b id="finalRecord">0</b>
+
         </div>
 
-        <button
-            class="gameOverButton again"
-            onclick="restartGame()"
-        >
-            🔄 CHƠI LẠI
-        </button>
+        <div class="gameOverButtons">
 
-        <button
-            class="gameOverButton menuBack"
-            onclick="backToMenu()"
-        >
-            🏠 MENU
-        </button>
+            <button
+                class="gameOverButton again"
+                onclick="restartGame()"
+            >
+                🔄 CHƠI LẠI
+            </button>
+
+            <button
+                class="gameOverButton menuBack"
+                onclick="backToMenu()"
+            >
+                🏠 VỀ MENU
+            </button>
+
+        </div>
 
     </div>
 
@@ -1025,20 +1014,25 @@ html, body {
     loop
     preload="auto"
 >
+
     <source
         src="https://raw.githubusercontent.com/honghoasamsunglt2-tech/ngon-lua-ruc-chay/main/Nh%E1%BA%A1c%20game.mp3"
         type="audio/mpeg"
     >
+
 </audio>
+
 
 <audio
     id="loseMusic"
     preload="auto"
 >
+
     <source
         src="https://raw.githubusercontent.com/honghoasamsunglt2-tech/ngon-lua-ruc-chay/main/Nh%E1%BA%A1c%20game%20k%E1%BA%BFt%20th%C3%BAc.mp3"
         type="audio/mpeg"
     >
+
 </audio>
 
 
@@ -1090,7 +1084,6 @@ let running = false;
 let paused = false;
 
 let lives = 3;
-
 let score = 0;
 
 let playerX = 0;
@@ -1101,7 +1094,6 @@ let obstacles = [];
 let spawnTimer = 0;
 
 let difficulty = "easy";
-
 let selectedCar = "red";
 
 let speed = 3.5;
@@ -1110,20 +1102,27 @@ let musicOn = true;
 
 let dragging = false;
 
+let record =
+    Number(
+        localStorage.getItem(
+            "ngonLuaRecord"
+        ) || 0
+    );
 
-/* ================= ĐIỀU KHIỂN NÚT ================= */
+menuRecord.textContent = record;
 
-let moveLeft = false;
-let moveRight = false;
-let moveUp = false;
-let moveDown = false;
 
-const moveSpeed = 7;
+/* ================= NÚT GIỮ ================= */
+
+let movingLeft = false;
+let movingRight = false;
+let movingUp = false;
+let movingDown = false;
 
 
 /* ================= XE ================= */
 
-function selectCar(car) {
+function selectCar(car){
 
     selectedCar = car;
 
@@ -1135,7 +1134,8 @@ function selectCar(car) {
         .getElementById("yellowCar")
         .classList.remove("selected");
 
-    if (car === "red") {
+
+    if(car === "red"){
 
         document
             .getElementById("redCar")
@@ -1143,7 +1143,7 @@ function selectCar(car) {
 
         player.textContent = "🚗";
 
-    } else {
+    }else{
 
         document
             .getElementById("yellowCar")
@@ -1156,7 +1156,7 @@ function selectCar(car) {
 
 /* ================= ĐỘ KHÓ ================= */
 
-function selectDifficulty(level) {
+function selectDifficulty(level){
 
     difficulty = level;
 
@@ -1173,7 +1173,7 @@ function selectDifficulty(level) {
         .classList.remove("selected");
 
 
-    if (level === "easy") {
+    if(level === "easy"){
 
         speed = 3.5;
 
@@ -1183,7 +1183,7 @@ function selectDifficulty(level) {
     }
 
 
-    if (level === "medium") {
+    if(level === "medium"){
 
         speed = 5.5;
 
@@ -1193,7 +1193,7 @@ function selectDifficulty(level) {
     }
 
 
-    if (level === "hard") {
+    if(level === "hard"){
 
         speed = 12;
 
@@ -1206,7 +1206,7 @@ function selectDifficulty(level) {
 
 /* ================= BẮT ĐẦU ================= */
 
-function startGame() {
+function startGame(){
 
     menu.style.display = "none";
 
@@ -1215,15 +1215,12 @@ function startGame() {
     pauseScreen.style.display = "none";
 
     lives = 3;
-
     score = 0;
-
     spawnTimer = 0;
 
     clearObstacles();
 
     livesText.textContent = "3";
-
     scoreText.textContent = "0";
 
 
@@ -1236,8 +1233,9 @@ function startGame() {
     playerX =
         game.clientWidth / 2 - 32;
 
+
     playerY =
-        game.clientHeight - 150;
+        480;
 
 
     player.style.left =
@@ -1248,11 +1246,10 @@ function startGame() {
 
 
     running = true;
-
     paused = false;
 
 
-    if (musicOn) {
+    if(musicOn){
 
         bgMusic.currentTime = 0;
 
@@ -1270,13 +1267,13 @@ function startGame() {
 
 /* ================= GAME LOOP ================= */
 
-function gameLoop(time) {
+function gameLoop(){
 
-    if (!running)
+    if(!running)
         return;
 
 
-    if (paused) {
+    if(paused){
 
         requestAnimationFrame(
             gameLoop
@@ -1286,7 +1283,7 @@ function gameLoop(time) {
     }
 
 
-    movePlayer();
+    movePlayerByButtons();
 
     moveObstacles();
 
@@ -1305,24 +1302,23 @@ function gameLoop(time) {
 }
 
 
-/* ================= DI CHUYỂN XE BẰNG NÚT ================= */
+/* ================= DI CHUYỂN XE ================= */
 
-function movePlayer() {
+function movePlayerByButtons(){
 
-    if (!running || paused)
-        return;
+    const moveSpeed = 6;
 
 
-    if (moveLeft)
+    if(movingLeft)
         playerX -= moveSpeed;
 
-    if (moveRight)
+    if(movingRight)
         playerX += moveSpeed;
 
-    if (moveUp)
+    if(movingUp)
         playerY -= moveSpeed;
 
-    if (moveDown)
+    if(movingDown)
         playerY += moveSpeed;
 
 
@@ -1332,11 +1328,10 @@ function movePlayer() {
     const maxX =
         game.clientWidth * 0.90 - 70;
 
-    const minY = 60;
 
-    const maxY =
-        game.clientHeight - 125;
-
+    /*
+       XE CHỈ ĐI TRONG PHẦN ĐƯỜNG
+    */
 
     playerX =
         Math.max(
@@ -1346,6 +1341,16 @@ function movePlayer() {
                 playerX
             )
         );
+
+
+    /*
+       KHÔNG CHO XE ĐI VÀO TOP BAR
+       HOẶC KHU VỰC NÚT
+    */
+
+    const minY = 75;
+
+    const maxY = 520;
 
 
     playerY =
@@ -1366,25 +1371,138 @@ function movePlayer() {
 }
 
 
+/* ================= NÚT GIỮ ================= */
+
+function setupMoveButton(
+    id,
+    direction
+){
+
+    const button =
+        document.getElementById(id);
+
+
+    button.addEventListener(
+        "pointerdown",
+        function(e){
+
+            e.preventDefault();
+
+            if(direction === "left")
+                movingLeft = true;
+
+            if(direction === "right")
+                movingRight = true;
+
+            if(direction === "up")
+                movingUp = true;
+
+            if(direction === "down")
+                movingDown = true;
+        }
+    );
+
+
+    button.addEventListener(
+        "pointerup",
+        function(e){
+
+            e.preventDefault();
+
+            if(direction === "left")
+                movingLeft = false;
+
+            if(direction === "right")
+                movingRight = false;
+
+            if(direction === "up")
+                movingUp = false;
+
+            if(direction === "down")
+                movingDown = false;
+        }
+    );
+
+
+    button.addEventListener(
+        "pointercancel",
+        function(){
+
+            if(direction === "left")
+                movingLeft = false;
+
+            if(direction === "right")
+                movingRight = false;
+
+            if(direction === "up")
+                movingUp = false;
+
+            if(direction === "down")
+                movingDown = false;
+        }
+    );
+
+
+    button.addEventListener(
+        "pointerleave",
+        function(){
+
+            if(direction === "left")
+                movingLeft = false;
+
+            if(direction === "right")
+                movingRight = false;
+
+            if(direction === "up")
+                movingUp = false;
+
+            if(direction === "down")
+                movingDown = false;
+        }
+    );
+}
+
+
+setupMoveButton(
+    "leftBtn",
+    "left"
+);
+
+setupMoveButton(
+    "rightBtn",
+    "right"
+);
+
+setupMoveButton(
+    "upBtn",
+    "up"
+);
+
+setupMoveButton(
+    "downBtn",
+    "down"
+);
+
+
 /* ================= TẠO CHƯỚNG NGẠI ================= */
 
-function spawnObstacle() {
+function spawnObstacle(){
 
     spawnTimer++;
 
 
-    let rate = 90;
+    let rate = 75;
 
 
-    if (difficulty === "medium")
-        rate = 65;
+    if(difficulty === "medium")
+        rate = 55;
 
 
-    if (difficulty === "hard")
-        rate = 45;
+    if(difficulty === "hard")
+        rate = 38;
 
 
-    if (spawnTimer < rate)
+    if(spawnTimer < rate)
         return;
 
 
@@ -1403,43 +1521,31 @@ function spawnObstacle() {
         Math.random();
 
 
-    if (random < 0.20) {
+    if(random < 0.20){
 
         obstacle.textContent = "🛻";
-
         obstacle.dataset.type =
             "vehicle";
 
-    }
-
-    else if (random < 0.40) {
+    }else if(random < 0.40){
 
         obstacle.textContent = "🚛";
-
         obstacle.dataset.type =
             "vehicle";
 
-    }
-
-    else if (random < 0.60) {
+    }else if(random < 0.60){
 
         obstacle.textContent = "🚚";
-
         obstacle.dataset.type =
             "vehicle";
 
-    }
-
-    else if (random < 0.82) {
+    }else if(random < 0.82){
 
         obstacle.textContent = "🚧";
-
         obstacle.dataset.type =
             "barrier";
 
-    }
-
-    else {
+    }else{
 
         obstacle.textContent = "🕳️";
 
@@ -1476,7 +1582,8 @@ function spawnObstacle() {
         31;
 
 
-    obstacle.y = 50;
+    obstacle.y =
+        75;
 
 
     obstacle.style.left =
@@ -1499,14 +1606,14 @@ function spawnObstacle() {
 
 /* ================= DI CHUYỂN CHƯỚNG NGẠI ================= */
 
-function moveObstacles() {
+function moveObstacles(){
 
-    for (
+    for(
         let i =
         obstacles.length - 1;
         i >= 0;
         i--
-    ) {
+    ){
 
         const obstacle =
             obstacles[i];
@@ -1519,12 +1626,12 @@ function moveObstacles() {
             obstacle.y + "px";
 
 
-        if (
+        if(
             checkCollision(
                 player,
                 obstacle
             )
-        ) {
+        ){
 
             const type =
                 obstacle.dataset.type;
@@ -1538,10 +1645,9 @@ function moveObstacles() {
             );
 
 
-            if (
-                type ===
-                "pothole"
-            ) {
+            if(
+                type === "pothole"
+            ){
 
                 endGame();
 
@@ -1555,10 +1661,10 @@ function moveObstacles() {
         }
 
 
-        if (
+        if(
             obstacle.y >
-            game.clientHeight + 100
-        ) {
+            560
+        ){
 
             obstacle.remove();
 
@@ -1573,10 +1679,7 @@ function moveObstacles() {
 
 /* ================= VA CHẠM ================= */
 
-function checkCollision(
-    a,
-    b
-) {
+function checkCollision(a,b){
 
     const ar =
         a.getBoundingClientRect();
@@ -1603,29 +1706,30 @@ function checkCollision(
 
 /* ================= MẤT TIM ================= */
 
-function loseLife() {
+function loseLife(){
 
     lives--;
 
-    document.querySelector(
-        "#topBar .infoBox"
-    ).firstChild.textContent =
-        lives + "❤️ ";
+    livesText.textContent =
+        lives;
 
 
     player.style.transform =
         "scale(1.25)";
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        player.style.transform =
-            "scale(1)";
+            player.style.transform =
+                "scale(1)";
 
-    }, 180);
+        },
+        180
+    );
 
 
-    if (lives <= 0) {
+    if(lives <= 0){
 
         endGame();
     }
@@ -1634,7 +1738,7 @@ function loseLife() {
 
 /* ================= XÓA ================= */
 
-function clearObstacles() {
+function clearObstacles(){
 
     obstacles.forEach(
         obstacle =>
@@ -1647,19 +1751,25 @@ function clearObstacles() {
 
 /* ================= GAME OVER ================= */
 
-function endGame() {
+function endGame(){
 
-    if (!running)
+    if(!running)
         return;
 
 
     running = false;
 
 
+    movingLeft = false;
+    movingRight = false;
+    movingUp = false;
+    movingDown = false;
+
+
     bgMusic.pause();
 
 
-    if (musicOn) {
+    if(musicOn){
 
         loseMusic.currentTime = 0;
 
@@ -1677,7 +1787,7 @@ function endGame() {
         final;
 
 
-    if (final > record) {
+    if(final > record){
 
         record = final;
 
@@ -1695,6 +1805,26 @@ function endGame() {
         record;
 
 
+    /*
+       RESET ANIMATION
+       để mỗi lần Game Over
+       đều rơi lại từ trên xuống
+    */
+
+    const panel =
+        document.querySelector(
+            ".gameOverPanel"
+        );
+
+
+    panel.style.animation = "none";
+
+    void panel.offsetWidth;
+
+    panel.style.animation =
+        "fallGameOver .9s cubic-bezier(.2,1.6,.4,1) forwards";
+
+
     gameOver.style.display =
         "flex";
 }
@@ -1702,7 +1832,7 @@ function endGame() {
 
 /* ================= CHƠI LẠI ================= */
 
-function restartGame() {
+function restartGame(){
 
     loseMusic.pause();
 
@@ -1717,13 +1847,18 @@ function restartGame() {
 
 /* ================= PAUSE ================= */
 
-function openPause() {
+function openPause(){
 
-    if (!running)
+    if(!running)
         return;
 
 
     paused = true;
+
+    movingLeft = false;
+    movingRight = false;
+    movingUp = false;
+    movingDown = false;
 
     bgMusic.pause();
 
@@ -1734,7 +1869,7 @@ function openPause() {
 
 /* ================= TIẾP TỤC ================= */
 
-function resumeGame() {
+function resumeGame(){
 
     paused = false;
 
@@ -1742,7 +1877,7 @@ function resumeGame() {
         "none";
 
 
-    if (musicOn) {
+    if(musicOn){
 
         bgMusic.play().catch(
             () => {}
@@ -1753,11 +1888,16 @@ function resumeGame() {
 
 /* ================= VỀ MENU ================= */
 
-function backToMenu() {
+function backToMenu(){
 
     running = false;
 
     paused = false;
+
+    movingLeft = false;
+    movingRight = false;
+    movingUp = false;
+    movingDown = false;
 
     clearObstacles();
 
@@ -1781,7 +1921,7 @@ function backToMenu() {
 
 /* ================= ÂM NHẠC ================= */
 
-function toggleMusic() {
+function toggleMusic(){
 
     musicOn =
         !musicOn;
@@ -1798,7 +1938,7 @@ function toggleMusic() {
         );
 
 
-    if (!musicOn) {
+    if(!musicOn){
 
         bgMusic.pause();
 
@@ -1810,7 +1950,7 @@ function toggleMusic() {
         gameButton.textContent =
             "🔇";
 
-    } else {
+    }else{
 
         menuButton.textContent =
             "🔊 BẬT";
@@ -1819,7 +1959,7 @@ function toggleMusic() {
             "🔊";
 
 
-        if (running && !paused) {
+        if(running && !paused){
 
             bgMusic.play().catch(
                 () => {}
@@ -1829,13 +1969,13 @@ function toggleMusic() {
 }
 
 
-/* ================= DI CHUYỂN BẰNG CHẠM VÀO XE ================= */
+/* ================= KÉO XE ================= */
 
 player.addEventListener(
     "pointerdown",
-    function(e) {
+    function(e){
 
-        if (!running || paused)
+        if(!running || paused)
             return;
 
         dragging = true;
@@ -1849,9 +1989,9 @@ player.addEventListener(
 
 player.addEventListener(
     "pointermove",
-    function(e) {
+    function(e){
 
-        if (
+        if(
             !dragging ||
             !running ||
             paused
@@ -1882,12 +2022,6 @@ player.addEventListener(
             game.clientWidth * 0.90 - 70;
 
 
-        const minY = 60;
-
-        const maxY =
-            game.clientHeight - 125;
-
-
         playerX =
             Math.max(
                 minX,
@@ -1900,9 +2034,9 @@ player.addEventListener(
 
         playerY =
             Math.max(
-                minY,
+                75,
                 Math.min(
-                    maxY,
+                    520,
                     playerY
                 )
             );
@@ -1919,7 +2053,7 @@ player.addEventListener(
 
 player.addEventListener(
     "pointerup",
-    function() {
+    function(){
 
         dragging = false;
     }
@@ -1928,99 +2062,10 @@ player.addEventListener(
 
 player.addEventListener(
     "pointercancel",
-    function() {
+    function(){
 
         dragging = false;
     }
-);
-
-
-/* ================= NÚT GIỮ ĐỂ DI CHUYỂN ================= */
-
-function holdButton(
-    button,
-    direction
-) {
-
-    function start(e) {
-
-        e.preventDefault();
-
-        if (!running || paused)
-            return;
-
-        if (direction === "left")
-            moveLeft = true;
-
-        if (direction === "right")
-            moveRight = true;
-
-        if (direction === "up")
-            moveUp = true;
-
-        if (direction === "down")
-            moveDown = true;
-    }
-
-
-    function stop(e) {
-
-        e.preventDefault();
-
-        if (direction === "left")
-            moveLeft = false;
-
-        if (direction === "right")
-            moveRight = false;
-
-        if (direction === "up")
-            moveUp = false;
-
-        if (direction === "down")
-            moveDown = false;
-    }
-
-
-    button.addEventListener(
-        "pointerdown",
-        start
-    );
-
-    button.addEventListener(
-        "pointerup",
-        stop
-    );
-
-    button.addEventListener(
-        "pointercancel",
-        stop
-    );
-
-    button.addEventListener(
-        "pointerleave",
-        stop
-    );
-}
-
-
-holdButton(
-    document.getElementById("leftButton"),
-    "left"
-);
-
-holdButton(
-    document.getElementById("rightButton"),
-    "right"
-);
-
-holdButton(
-    document.getElementById("upButton"),
-    "up"
-);
-
-holdButton(
-    document.getElementById("downButton"),
-    "down"
 );
 
 
