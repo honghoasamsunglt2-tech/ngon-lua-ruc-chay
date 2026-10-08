@@ -14,668 +14,413 @@ game = r"""
 <meta charset="UTF-8">
 
 <style>
-
-* {
-    box-sizing: border-box;
-    user-select: none;
-    -webkit-user-select: none;
+*{
+    box-sizing:border-box;
+    user-select:none;
+    -webkit-user-select:none;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    background: #050505;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+body{
+    margin:0;
+    background:#080808;
+    color:white;
+    font-family:Arial,sans-serif;
+    overflow:hidden;
 }
 
-#game {
-    width: 100%;
-    max-width: 430px;
-    height: 780px;
-    margin: auto;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at center, #321000, #080808 70%);
+#app{
+    width:100%;
+    max-width:430px;
+    margin:auto;
 }
 
 /* ================= MENU ================= */
 
-#menu {
-    position: absolute;
-    inset: 0;
-    z-index: 100;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
+#menu{
+    min-height:760px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
     background:
-        radial-gradient(
-            circle,
-            #631700 0%,
-            #280700 45%,
-            #050505 100%
-        );
+        radial-gradient(circle at center,#3a0505 0%,#100000 45%,#050505 100%);
 }
 
-/* TIÊU ĐỀ */
-
-.title {
-    font-size: 43px;
-    font-weight: 900;
-    font-style: italic;
-    text-align: center;
-
-    color: #ff4a00;
-
+.title{
+    font-size:43px;
+    font-weight:900;
+    font-style:italic;
+    text-align:center;
+    color:#ff3030;
     text-shadow:
-        0 0 5px #ff0000,
-        0 0 12px #ff2600,
-        0 0 25px #ff5100,
-        0 0 45px #ff1800;
-
-    animation: heartbeat 1.5s infinite;
-
-    line-height: 1.05;
-
-    margin-bottom: 10px;
+        0 0 8px #ff0000,
+        0 0 20px #ff4500,
+        0 0 35px #ff0000;
+    animation:heartBeat 1.15s infinite;
+    margin-bottom:10px;
 }
 
-@keyframes heartbeat {
-
-    0% {
-        transform: scale(1);
-    }
-
-    15% {
-        transform: scale(1.08);
-    }
-
-    30% {
-        transform: scale(1);
-    }
-
-    45% {
-        transform: scale(1.06);
-    }
-
-    60% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+@keyframes heartBeat{
+    0%{transform:scale(1)}
+    15%{transform:scale(1.08)}
+    30%{transform:scale(1)}
+    45%{transform:scale(1.05)}
+    60%{transform:scale(1)}
+    100%{transform:scale(1)}
 }
 
-.subtitle {
-    color: #ffc7a1;
-    font-size: 15px;
-    font-style: italic;
-    margin-bottom: 22px;
+.subtitle{
+    font-size:17px;
+    letter-spacing:3px;
+    color:#ffb0b0;
+    margin-bottom:25px;
 }
 
-/* Ô NHẠC */
-
-.musicBox {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    background: #3b1000dd;
-
-    border: 2px solid #a93200;
-    border-radius: 18px;
-
-    padding: 10px 16px;
-
-    margin-bottom: 18px;
-
-    box-shadow:
-        0 0 15px #ff330055;
+.box{
+    width:90%;
+    max-width:330px;
+    background:#171717;
+    border:2px solid #ff3030;
+    border-radius:18px;
+    padding:14px;
+    margin:7px;
+    text-align:center;
+    box-shadow:0 0 15px #ff000055;
 }
 
-.musicButton {
-    border: none;
-    border-radius: 12px;
-
-    padding: 9px 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff9d00,
-            #ff2600
-        );
-
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-
-    cursor: pointer;
+.box-title{
+    font-size:18px;
+    margin-bottom:10px;
+    font-weight:bold;
 }
 
-/* TIÊU ĐỀ NHỎ */
-
-.sectionTitle {
-    color: white;
-    font-size: 19px;
-    font-weight: bold;
-    margin: 8px 0;
+button{
+    border:none;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
 }
 
-/* ĐỘ KHÓ */
-
-.difficulty {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
+.diff{
+    display:flex;
+    gap:8px;
+    justify-content:center;
 }
 
-.diffButton {
-    width: 95px;
-
-    padding: 11px 4px;
-
-    border: 2px solid #555;
-    border-radius: 14px;
-
-    background: #222;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
+.diff button,
+.car-btn{
+    background:#292929;
+    color:white;
+    border:2px solid #555;
+    border-radius:12px;
+    padding:11px 13px;
+    font-size:16px;
 }
 
-.diffButton.selected {
-    background:
-        linear-gradient(
-            135deg,
-            #ffad00,
-            #ff2700
-        );
-
-    border-color: #ffd36a;
-
-    box-shadow:
-        0 0 18px #ff4300;
+.diff button.active,
+.car-btn.active{
+    background:#b80000;
+    border-color:#ff4444;
+    box-shadow:0 0 12px #ff0000;
 }
 
-/* CHỌN XE */
-
-.carChoices {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    max-width: 330px;
-
-    margin-bottom: 18px;
+.car-list{
+    display:flex;
+    justify-content:center;
+    gap:20px;
 }
 
-.carButton {
-    flex: 1;
-
-    padding: 13px 5px;
-
-    border: 2px solid #555;
-    border-radius: 15px;
-
-    background: #222;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
+.car-btn{
+    font-size:30px;
+    width:90px;
 }
 
-.carButton.selected {
-    background:
-        linear-gradient(
-            135deg,
-            #ffad00,
-            #ff2700
-        );
-
-    border-color: #ffd36a;
-
-    box-shadow:
-        0 0 18px #ff4300;
+.music-btn{
+    background:#292929;
+    color:white;
+    border:2px solid #777;
+    border-radius:12px;
+    padding:10px 25px;
+    font-size:17px;
 }
 
-/* BẮT ĐẦU */
-
-.startButton {
-    width: 100%;
-    max-width: 340px;
-
-    padding: 16px;
-
-    border: none;
-    border-radius: 18px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff8a00,
-            #e90000
-        );
-
-    color: white;
-
-    font-size: 23px;
-    font-weight: 900;
-
-    box-shadow:
-        0 0 25px #ff300077;
+.start-btn{
+    width:90%;
+    max-width:330px;
+    padding:17px;
+    margin-top:15px;
+    border-radius:17px;
+    background:linear-gradient(135deg,#ff1616,#7a0000);
+    color:white;
+    font-size:23px;
+    font-weight:bold;
+    box-shadow:0 0 20px #ff000088;
 }
 
-/* KỶ LỤC */
-
-.recordMenu {
-    margin-top: 16px;
-
-    background: #00000077;
-
-    padding: 8px 18px;
-
-    border-radius: 14px;
-
-    font-size: 18px;
+.record{
+    margin-top:16px;
+    font-size:17px;
+    color:#ffd36b;
 }
 
-/* ================= ROAD ================= */
+/* ================= GAME ================= */
 
-#road {
-    position: absolute;
-
-    left: 10%;
-    width: 80%;
-
-    top: 55px;
-    bottom: 55px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #202020,
-            #353535 3%,
-            #191919 4%,
-            #191919 96%,
-            #353535 97%,
-            #202020
-        );
-
-    border-left: 5px solid #777;
-    border-right: 5px solid #777;
-
-    overflow: hidden;
+#game{
+    display:none;
+    position:relative;
+    width:100%;
+    height:760px;
+    background:#111;
+    overflow:hidden;
 }
 
-/* 3 LÀN */
-
-.laneLine {
-    position: absolute;
-
-    top: -120px;
-
-    width: 5px;
-    height: 85px;
-
-    background: white;
-
-    opacity: .75;
-
-    animation:
-        roadMove .65s linear infinite;
+#topbar{
+    position:absolute;
+    top:8px;
+    left:8px;
+    right:8px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:20;
 }
 
-.laneLine.one {
-    left: 33.33%;
+#hearts{
+    font-size:20px;
+    font-weight:bold;
 }
 
-.laneLine.two {
-    left: 66.66%;
+#gameMusic{
+    background:#202020;
+    color:white;
+    border:1px solid #777;
+    border-radius:10px;
+    padding:8px 10px;
+    font-size:14px;
 }
 
-@keyframes roadMove {
-
-    from {
-        transform: translateY(-120px);
-    }
-
-    to {
-        transform: translateY(900px);
-    }
+#menuBtn{
+    width:44px;
+    height:40px;
+    border-radius:10px;
+    background:#202020;
+    color:white;
+    font-size:24px;
+    border:1px solid #777;
 }
 
-/* ================= PLAYER ================= */
-
-#player {
-    position: absolute;
-
-    width: 65px;
-    height: 75px;
-
-    font-size: 52px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 30;
-
-    touch-action: none;
-
-    filter:
-        drop-shadow(
-            0 5px 5px #000
-        );
+#road{
+    position:absolute;
+    top:66px;
+    left:8%;
+    width:84%;
+    height:500px;
+    background:#303030;
+    border-left:8px solid #777;
+    border-right:8px solid #777;
+    overflow:hidden;
 }
 
-/* ================= OBSTACLE ================= */
-
-.obstacle {
-    position: absolute;
-
-    width: 62px;
-    height: 70px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 43px;
-
-    z-index: 20;
+.lane-line{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:repeating-linear-gradient(
+        to bottom,
+        #eee 0px,
+        #eee 35px,
+        transparent 35px,
+        transparent 70px
+    );
+    opacity:.7;
 }
 
-/* Ổ GÀ */
+.line1{left:33.33%}
+.line2{left:66.66%}
 
-.pothole {
-    font-size: 48px;
+#player{
+    position:absolute;
+    width:55px;
+    height:78px;
+    bottom:30px;
+    left:calc(50% - 27px);
+    font-size:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+    filter:drop-shadow(0 4px 5px #000);
 }
 
-/* ================= TOP UI ================= */
-
-#topBar {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 55px;
-
-    z-index: 50;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 7px 10px;
-
-    pointer-events: none;
+.obstacle{
+    position:absolute;
+    width:55px;
+    height:65px;
+    font-size:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:8;
 }
 
-.leftInfo {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+.pothole{
+    position:absolute;
+    width:55px;
+    height:30px;
+    border-radius:50%;
+    background:#090909;
+    box-shadow:inset 0 0 10px #000;
+    z-index:5;
 }
 
-.infoBox {
-    background: #000000bb;
-
-    border-radius: 13px;
-
-    padding: 8px 11px;
-
-    font-size: 16px;
-    font-weight: bold;
+#score{
+    position:absolute;
+    top:75px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:20px;
+    font-weight:bold;
+    z-index:20;
+    background:#0009;
+    padding:5px 14px;
+    border-radius:12px;
 }
 
-.topRight {
-    display: flex;
-    gap: 7px;
+/* ================= CONTROLS ================= */
+
+#controls{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:20px;
+    height:150px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    align-items:center;
+    padding:0 15px;
+    z-index:30;
 }
 
-.topButton {
-    pointer-events: auto;
+.ctrl{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#222;
+    border:2px solid #888;
+    color:white;
+    font-size:30px;
+    box-shadow:0 4px 10px #000;
+}
 
-    width: 43px;
-    height: 40px;
+.left{
+    justify-self:start;
+}
 
-    border: none;
-    border-radius: 11px;
+.right{
+    justify-self:end;
+}
 
-    background: #000000cc;
+.middle{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+}
 
-    color: white;
-
-    font-size: 21px;
+.small{
+    width:55px;
+    height:45px;
+    font-size:24px;
 }
 
 /* ================= PAUSE ================= */
 
-#pauseScreen {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 80;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    background: #000000cc;
+#pauseScreen{
+    display:none;
+    position:absolute;
+    inset:0;
+    background:#000b;
+    z-index:100;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
 }
 
-.panel {
-    width: 82%;
-    max-width: 350px;
-
-    background: #171717;
-
-    border: 2px solid #ff4d00;
-
-    border-radius: 20px;
-
-    padding: 25px;
-
-    text-align: center;
-
-    box-shadow:
-        0 0 35px #ff300055;
+.pause-box{
+    background:#191919;
+    border:2px solid #ff3030;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
 }
 
-.panel h2 {
-    color: #ff6417;
-    font-size: 29px;
-}
-
-.panel button {
-    width: 100%;
-
-    padding: 13px;
-
-    margin-top: 10px;
-
-    border: none;
-    border-radius: 12px;
-
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.resume {
-    background: #ff6a00;
-    color: white;
-}
-
-.home {
-    background: #333;
-    color: white;
+.pause-box button{
+    display:block;
+    width:220px;
+    padding:13px;
+    margin:10px;
+    border-radius:12px;
+    background:#8d0000;
+    color:white;
+    font-size:17px;
 }
 
 /* ================= GAME OVER ================= */
 
-#gameOver {
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 90;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    background: #000000b8;
+#gameOver{
+    display:none;
+    position:absolute;
+    inset:0;
+    z-index:200;
+    background:#000b;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
 }
 
-/* GAME OVER RƠI */
-
-.gameOverPanel {
-    text-align: center;
-
-    animation:
-        fallGameOver
-        .9s
-        cubic-bezier(.2,1.6,.4,1)
-        forwards;
-}
-
-@keyframes fallGameOver {
-
-    0% {
-        transform:
-            translateY(-500px)
-            rotate(-8deg);
-        opacity: 0;
-    }
-
-    55% {
-        transform:
-            translateY(25px)
-            rotate(5deg);
-        opacity: 1;
-    }
-
-    70% {
-        transform:
-            translateY(-12px)
-            rotate(-3deg);
-    }
-
-    82% {
-        transform:
-            translateY(7px)
-            rotate(2deg);
-    }
-
-    100% {
-        transform:
-            translateY(0)
-            rotate(0);
-    }
-}
-
-.gameOverTitle {
-    font-size: 48px;
-
-    font-weight: 900;
-
-    color: #ff2a00;
-
-    font-style: italic;
-
+.game-over-text{
+    font-size:55px;
+    font-weight:900;
+    color:#ff2222;
     text-shadow:
-        0 0 8px #ff0000,
-        0 0 20px #ff4300,
-        0 0 35px #ff0000;
-
-    animation:
-        shake
-        .18s
-        .9s
-        5;
+        0 0 8px red,
+        0 0 20px red;
+    animation:fall 1s ease-out,shake .15s 7;
 }
 
-@keyframes shake {
-
-    0% {
-        transform: translateX(0);
+@keyframes fall{
+    0%{
+        transform:translateY(-500px) rotate(-10deg);
+        opacity:0;
     }
-
-    25% {
-        transform: translateX(-8px);
+    70%{
+        transform:translateY(25px) rotate(5deg);
     }
-
-    50% {
-        transform: translateX(8px);
-    }
-
-    75% {
-        transform: translateX(-6px);
-    }
-
-    100% {
-        transform: translateX(0);
+    100%{
+        transform:translateY(0) rotate(0);
+        opacity:1;
     }
 }
 
-.scoreFinal {
-    color: white;
-
-    font-size: 20px;
-
-    margin: 10px 0 20px;
+@keyframes shake{
+    0%{transform:translateX(-8px)}
+    50%{transform:translateX(8px)}
+    100%{transform:translateX(-8px)}
 }
 
-.gameOverButton {
-    border: none;
-
-    border-radius: 13px;
-
-    padding: 13px 25px;
-
-    margin: 5px;
-
-    font-size: 16px;
-
-    font-weight: bold;
+.over-score{
+    font-size:20px;
+    margin:15px;
 }
 
-.again {
-    background: #ff6500;
-    color: white;
-}
-
-.menuBack {
-    background: #333;
-    color: white;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 600px) {
-
-    #game {
-        height: 780px;
-    }
-
-    .title {
-        font-size: 38px;
-    }
-
+.restart{
+    padding:14px 35px;
+    border-radius:14px;
+    background:#b00000;
+    color:white;
+    font-size:19px;
 }
 
 </style>
@@ -683,1104 +428,773 @@ html, body {
 
 <body>
 
-<div id="game">
+<div id="app">
 
 <!-- ================= MENU ================= -->
 
 <div id="menu">
 
     <div class="title">
-        🔥 NGỌN LỬA<br>
-        RỰC CHÁY 🔥
+        🔥 NGỌN LỬA RỰC CHÁY 🔥
     </div>
 
     <div class="subtitle">
-        🏎️ FIRE ROAD RACING 🏎️
+        FIRE ROAD RACING
     </div>
 
-    <div class="musicBox">
+    <div class="box">
 
-        <span>
-            🎵 NHẠC
-        </span>
+        <div class="box-title">🎵 ÂM NHẠC</div>
 
         <button
-            class="musicButton"
             id="menuMusic"
-            onclick="toggleMusic()"
-        >
+            class="music-btn"
+            onclick="toggleMusic()">
             🔊 BẬT
         </button>
 
     </div>
 
-    <div class="sectionTitle">
-        ĐỘ KHÓ
-    </div>
+    <div class="box">
 
-    <div class="difficulty">
+        <div class="box-title">⚡ CHỌN CẤP ĐỘ</div>
 
-        <button
-            class="diffButton selected"
-            id="easyButton"
-            onclick="selectDifficulty('easy')"
-        >
-            DỄ
-        </button>
+        <div class="diff">
 
-        <button
-            class="diffButton"
-            id="mediumButton"
-            onclick="selectDifficulty('medium')"
-        >
-            VỪA
-        </button>
+            <button
+                id="easy"
+                class="active"
+                onclick="setDifficulty('easy')">
+                DỄ
+            </button>
 
-        <button
-            class="diffButton"
-            id="hardButton"
-            onclick="selectDifficulty('hard')"
-        >
-            KHÓ
-        </button>
+            <button
+                id="medium"
+                onclick="setDifficulty('medium')">
+                VỪA
+            </button>
+
+            <button
+                id="hard"
+                onclick="setDifficulty('hard')">
+                KHÓ
+            </button>
+
+        </div>
 
     </div>
 
-    <div class="sectionTitle">
-        CHỌN XE
-    </div>
+    <div class="box">
 
-    <div class="carChoices">
+        <div class="box-title">🚗 CHỌN XE</div>
 
-        <button
-            class="carButton selected"
-            id="redCar"
-            onclick="selectCar('red')"
-        >
-            🚗 ĐỎ
-        </button>
+        <div class="car-list">
 
-        <button
-            class="carButton"
-            id="yellowCar"
-            onclick="selectCar('yellow')"
-        >
-            🚕 VÀNG
-        </button>
+            <button
+                id="redCar"
+                class="car-btn active"
+                onclick="setCar('🚗')">
+                🚗
+            </button>
+
+            <button
+                id="yellowCar"
+                class="car-btn"
+                onclick="setCar('🚕')">
+                🚕
+            </button>
+
+        </div>
 
     </div>
 
     <button
-        class="startButton"
-        onclick="startGame()"
-    >
-        BẮT ĐẦU 🔥
+        class="start-btn"
+        onclick="startGame()">
+        🔥 BẮT ĐẦU
     </button>
 
-    <div class="recordMenu">
-        🏆 KỶ LỤC:
-        <span id="menuRecord">0</span>
+    <div class="record">
+        🏆 KỶ LỤC: <span id="menuRecord">0</span>
     </div>
 
 </div>
 
 
-<!-- ================= ROAD ================= -->
+<!-- ================= GAME ================= -->
 
-<div id="road">
+<div id="game">
 
-    <div class="laneLine one"></div>
-    <div class="laneLine two"></div>
+    <div id="topbar">
 
-</div>
-
-
-<!-- ================= PLAYER ================= -->
-
-<div id="player">
-    🚗
-</div>
-
-
-<!-- ================= TOP BAR ================= -->
-
-<div id="topBar">
-
-    <div class="leftInfo">
-
-        <div class="infoBox">
-            ❤️ <span id="lives">3</span>
-        </div>
-
-        <div class="infoBox">
-            🎵
-            <button
-                id="gameMusic"
-                onclick="toggleMusic()"
-                style="
-                border:none;
-                background:none;
-                color:white;
-                font-size:18px;
-                "
-            >
-                🔊
-            </button>
-        </div>
-
-    </div>
-
-    <div class="topRight">
-
-        <div class="infoBox">
-            ⭐ <span id="score">0</span>
+        <div id="hearts">
+            3❤️
         </div>
 
         <button
-            class="topButton"
-            onclick="openPause()"
-        >
+            id="gameMusic"
+            onclick="toggleMusic()">
+            🔊
+        </button>
+
+        <button
+            id="menuBtn"
+            onclick="pauseGame()">
             ☰
         </button>
 
     </div>
 
-</div>
+    <div id="score">
+        0
+    </div>
 
+    <div id="road">
 
-<!-- ================= PAUSE ================= -->
+        <div class="lane-line line1"></div>
+        <div class="lane-line line2"></div>
 
-<div id="pauseScreen">
+        <div id="player">🚗</div>
 
-    <div class="panel">
+    </div>
 
-        <h2>
-            ⏸️ TẠM DỪNG
-        </h2>
+    <!-- NÚT ĐIỀU KHIỂN -->
+
+    <div id="controls">
 
         <button
-            class="resume"
-            onclick="resumeGame()"
-        >
-            ▶️ TIẾP TỤC
+            class="ctrl left"
+            onpointerdown="moveLeft()">
+            ⬅️
         </button>
 
+        <div class="middle">
+
+            <button
+                class="ctrl small"
+                onpointerdown="moveUp()">
+                ⬆️
+            </button>
+
+            <button
+                class="ctrl small"
+                onpointerdown="moveDown()">
+                ⬇️
+            </button>
+
+        </div>
+
         <button
-            class="home"
-            onclick="backToMenu()"
-        >
-            🏠 MENU CHÍNH
+            class="ctrl right"
+            onpointerdown="moveRight()">
+            ➡️
         </button>
 
     </div>
 
-</div>
+
+    <!-- PAUSE -->
+
+    <div id="pauseScreen">
+
+        <div class="pause-box">
+
+            <h2>⏸ TẠM DỪNG</h2>
+
+            <button onclick="continueGame()">
+                ▶️ TIẾP TỤC
+            </button>
+
+            <button onclick="backToMenu()">
+                🏠 VỀ MENU
+            </button>
+
+        </div>
+
+    </div>
 
 
-<!-- ================= GAME OVER ================= -->
+    <!-- GAME OVER -->
 
-<div id="gameOver">
+    <div id="gameOver">
 
-    <div class="gameOverPanel">
-
-        <div class="gameOverTitle">
+        <div class="game-over-text">
             GAME OVER
         </div>
 
-        <div class="scoreFinal">
-            ⭐ Điểm:
-            <b id="finalScore">0</b>
-            <br>
-            🏆 Kỷ lục:
-            <b id="finalRecord">0</b>
+        <div class="over-score">
+            Điểm: <span id="finalScore">0</span>
         </div>
 
         <button
-            class="gameOverButton again"
-            onclick="restartGame()"
-        >
+            class="restart"
+            onclick="restartGame()">
             🔄 CHƠI LẠI
-        </button>
-
-        <button
-            class="gameOverButton menuBack"
-            onclick="backToMenu()"
-        >
-            🏠 MENU
         </button>
 
     </div>
 
 </div>
 
-
-<!-- ================= AUDIO ================= -->
+<!-- ================= MUSIC ================= -->
 
 <audio
     id="bgMusic"
     loop
-    preload="auto"
->
+    preload="auto">
+
     <source
-        src="https://raw.githubusercontent.com/honghoasamsunglt2-tech/ngon-lua-ruc-chay/main/Nh%E1%BA%A1c%20game.mp3"
-        type="audio/mpeg"
-    >
+        src="https://cdn.jsdelivr.net/gh/honghoasamsunglt2-tech/ngon-lua-ruc-chay@main/Nh%E1%BA%A1c%20game.mp3"
+        type="audio/mpeg">
+
 </audio>
 
 <audio
-    id="loseMusic"
-    preload="auto"
->
+    id="endMusic"
+    preload="auto">
+
     <source
-        src="https://raw.githubusercontent.com/honghoasamsunglt2-tech/ngon-lua-ruc-chay/main/Nh%E1%BA%A1c%20game%20k%E1%BA%BFt%20th%C3%BAc.mp3"
-        type="audio/mpeg"
-    >
+        src="https://cdn.jsdelivr.net/gh/honghoasamsunglt2-tech/ngon-lua-ruc-chay@main/Nh%E1%BA%A1c%20game%20k%E1%BA%BFt%20th%C3%BAc.mp3"
+        type="audio/mpeg">
+
 </audio>
 
 
 <script>
 
-/* ================= BIẾN ================= */
+const game = document.getElementById("game");
+const menu = document.getElementById("menu");
+const road = document.getElementById("road");
+const player = document.getElementById("player");
 
-const game =
-    document.getElementById("game");
+const heartsText = document.getElementById("hearts");
+const scoreText = document.getElementById("score");
 
-const road =
-    document.getElementById("road");
-
-const player =
-    document.getElementById("player");
-
-const menu =
-    document.getElementById("menu");
-
-const pauseScreen =
-    document.getElementById("pauseScreen");
-
-const gameOver =
-    document.getElementById("gameOver");
-
-const bgMusic =
-    document.getElementById("bgMusic");
-
-const loseMusic =
-    document.getElementById("loseMusic");
-
-const livesText =
-    document.getElementById("lives");
-
-const scoreText =
-    document.getElementById("score");
-
-const menuRecord =
-    document.getElementById("menuRecord");
-
-const finalScore =
-    document.getElementById("finalScore");
-
-const finalRecord =
-    document.getElementById("finalRecord");
-
-
-let running = false;
-let paused = false;
-
-let lives = 3;
-
-let score = 0;
-
-let playerX = 0;
-let playerY = 0;
-
-let obstacles = [];
-
-let spawnTimer = 0;
-
-let difficulty = "easy";
-
-let selectedCar = "red";
-
-let speed = 3.5;
+const bgMusic = document.getElementById("bgMusic");
+const endMusic = document.getElementById("endMusic");
 
 let musicOn = true;
+let difficulty = "easy";
+let playerCar = "🚗";
 
-let dragging = false;
+let hearts = 3;
+let score = 0;
 
-let record =
-    Number(
-        localStorage.getItem(
-            "ngonLuaRecord"
-        ) || 0
-    );
+let gameRunning = false;
+let paused = false;
 
-menuRecord.textContent = record;
+let speed = 4;
+let spawnTime = 950;
 
+let obstacles = [];
+let lastSpawn = 0;
+let lastTime = 0;
 
-/* ================= XE ================= */
-
-function selectCar(car) {
-
-    selectedCar = car;
-
-    document
-        .getElementById("redCar")
-        .classList.remove("selected");
-
-    document
-        .getElementById("yellowCar")
-        .classList.remove("selected");
-
-    if (car === "red") {
-
-        document
-            .getElementById("redCar")
-            .classList.add("selected");
-
-        player.textContent = "🚗";
-
-    } else {
-
-        document
-            .getElementById("yellowCar")
-            .classList.add("selected");
-
-        player.textContent = "🚕";
-    }
-}
+let px = 50;
+let py = 82;
 
 
-/* ================= ĐỘ KHÓ ================= */
+/* ================= DIFFICULTY ================= */
 
-function selectDifficulty(level) {
+function setDifficulty(level){
 
     difficulty = level;
 
     document
-        .getElementById("easyButton")
-        .classList.remove("selected");
+        .querySelectorAll(".diff button")
+        .forEach(b => b.classList.remove("active"));
 
     document
-        .getElementById("mediumButton")
-        .classList.remove("selected");
+        .getElementById(level)
+        .classList.add("active");
 
-    document
-        .getElementById("hardButton")
-        .classList.remove("selected");
-
-
-    if (level === "easy") {
-
-        speed = 3.5;
-
-        document
-            .getElementById("easyButton")
-            .classList.add("selected");
+    if(level === "easy"){
+        speed = 4;
+        spawnTime = 1000;
     }
 
-
-    if (level === "medium") {
-
-        speed = 5.5;
-
-        document
-            .getElementById("mediumButton")
-            .classList.add("selected");
+    if(level === "medium"){
+        speed = 7;
+        spawnTime = 700;
     }
 
-
-    if (level === "hard") {
-
-        speed = 8;
-
-        document
-            .getElementById("hardButton")
-            .classList.add("selected");
+    if(level === "hard"){
+        speed = 13;
+        spawnTime = 380;
     }
 }
 
 
-/* ================= BẮT ĐẦU ================= */
+/* ================= CAR ================= */
 
-function startGame() {
+function setCar(car){
+
+    playerCar = car;
+
+    player.textContent = car;
+
+    document
+        .querySelectorAll(".car-btn")
+        .forEach(b => b.classList.remove("active"));
+
+    if(car === "🚗"){
+        document
+            .getElementById("redCar")
+            .classList.add("active");
+    }else{
+        document
+            .getElementById("yellowCar")
+            .classList.add("active");
+    }
+}
+
+
+/* ================= MUSIC ================= */
+
+function toggleMusic(){
+
+    musicOn = !musicOn;
+
+    if(musicOn){
+
+        bgMusic.play().catch(()=>{});
+
+        document.getElementById("menuMusic").textContent = "🔊 BẬT";
+        document.getElementById("gameMusic").textContent = "🔊";
+
+    }else{
+
+        bgMusic.pause();
+
+        document.getElementById("menuMusic").textContent = "🔇 TẮT";
+        document.getElementById("gameMusic").textContent = "🔇";
+
+    }
+}
+
+
+/* ================= START ================= */
+
+function startGame(){
 
     menu.style.display = "none";
+    game.style.display = "block";
 
-    gameOver.style.display = "none";
-
-    pauseScreen.style.display = "none";
-
-    lives = 3;
-
+    hearts = 3;
     score = 0;
 
-    spawnTimer = 0;
+    px = 50;
+    py = 82;
 
-    clearObstacles();
+    player.style.left = "calc(50% - 27px)";
+    player.style.top = "390px";
 
-    livesText.textContent = "3";
-
+    heartsText.textContent = "3❤️";
     scoreText.textContent = "0";
 
+    obstacles.forEach(o => o.el.remove());
+    obstacles = [];
 
-    player.textContent =
-        selectedCar === "red"
-        ? "🚗"
-        : "🚕";
-
-
-    playerX =
-        game.clientWidth / 2 - 32;
-
-    playerY =
-        game.clientHeight - 150;
-
-
-    player.style.left =
-        playerX + "px";
-
-    player.style.top =
-        playerY + "px";
-
-
-    running = true;
-
+    gameRunning = true;
     paused = false;
 
+    lastSpawn = performance.now();
+    lastTime = performance.now();
 
-    if (musicOn) {
-
+    if(musicOn){
         bgMusic.currentTime = 0;
-
-        bgMusic.play().catch(
-            () => {}
-        );
+        bgMusic.play().catch(()=>{});
     }
 
+    requestAnimationFrame(loop);
+}
 
-    requestAnimationFrame(
-        gameLoop
+
+/* ================= PLAYER MOVE ================= */
+
+function moveLeft(){
+
+    if(!gameRunning || paused) return;
+
+    px -= 8;
+
+    if(px < 5) px = 5;
+
+    player.style.left =
+        "calc(" + px + "% - 27px)";
+}
+
+
+function moveRight(){
+
+    if(!gameRunning || paused) return;
+
+    px += 8;
+
+    if(px > 95) px = 95;
+
+    player.style.left =
+        "calc(" + px + "% - 27px)";
+}
+
+
+function moveUp(){
+
+    if(!gameRunning || paused) return;
+
+    py -= 8;
+
+    if(py < 5) py = 5;
+
+    player.style.top =
+        (py * 4.3) + "px";
+}
+
+
+function moveDown(){
+
+    if(!gameRunning || paused) return;
+
+    py += 8;
+
+    if(py > 82) py = 82;
+
+    player.style.top =
+        (py * 4.3) + "px";
+}
+
+
+/* ================= SPAWN ================= */
+
+function spawnObstacle(){
+
+    const el = document.createElement("div");
+
+    el.className = "obstacle";
+
+    const types = [
+        "🛻",
+        "🚛",
+        "🚚",
+        "🚧"
+    ];
+
+    el.textContent =
+        types[Math.floor(Math.random()*types.length)];
+
+    const lane =
+        Math.floor(Math.random()*3);
+
+    el.style.left =
+        (lane * 33.33 + 5) + "%";
+
+    el.style.top = "-70px";
+
+    road.appendChild(el);
+
+    obstacles.push({
+        el:el,
+        x:lane,
+        y:-70,
+        hit:false
+    });
+
+
+    /* Tăng mật độ xe */
+
+    if(Math.random() < 0.45){
+
+        const el2 = document.createElement("div");
+
+        el2.className = "obstacle";
+
+        el2.textContent =
+            types[Math.floor(Math.random()*types.length)];
+
+        let lane2 =
+            Math.floor(Math.random()*3);
+
+        while(lane2 === lane){
+            lane2 =
+                Math.floor(Math.random()*3);
+        }
+
+        el2.style.left =
+            (lane2 * 33.33 + 5) + "%";
+
+        el2.style.top = "-150px";
+
+        road.appendChild(el2);
+
+        obstacles.push({
+            el:el2,
+            x:lane2,
+            y:-150,
+            hit:false
+        });
+    }
+}
+
+
+/* ================= POTHOLE ================= */
+
+function spawnPothole(){
+
+    const hole = document.createElement("div");
+
+    hole.className = "pothole";
+
+    const lane =
+        Math.floor(Math.random()*3);
+
+    hole.style.left =
+        (lane * 33.33 + 5) + "%";
+
+    hole.style.top = "-40px";
+
+    road.appendChild(hole);
+
+    obstacles.push({
+        el:hole,
+        x:lane,
+        y:-40,
+        pothole:true,
+        hit:false
+    });
+}
+
+
+/* ================= COLLISION ================= */
+
+function collision(a,b){
+
+    const ar = a.getBoundingClientRect();
+    const br = b.getBoundingClientRect();
+
+    return !(
+        ar.right < br.left ||
+        ar.left > br.right ||
+        ar.bottom < br.top ||
+        ar.top > br.bottom
     );
 }
 
 
 /* ================= GAME LOOP ================= */
 
-function gameLoop(time) {
+function loop(time){
 
-    if (!running)
-        return;
+    if(!gameRunning) return;
 
-
-    if (paused) {
-
-        requestAnimationFrame(
-            gameLoop
-        );
-
+    if(paused){
+        requestAnimationFrame(loop);
         return;
     }
 
+    const dt =
+        Math.min(time-lastTime,40);
 
-    moveObstacles();
+    lastTime = time;
 
-    spawnObstacle();
+    if(time-lastSpawn > spawnTime){
 
+        spawnObstacle();
 
-    score += 0.03;
+        if(Math.random() < 0.35){
+            spawnPothole();
+        }
 
-    scoreText.textContent =
-        Math.floor(score);
-
-
-    requestAnimationFrame(
-        gameLoop
-    );
-}
-
-
-/* ================= TẠO CHƯỚNG NGẠI ================= */
-
-function spawnObstacle() {
-
-    spawnTimer++;
-
-
-    let rate = 75;
-
-
-    if (difficulty === "medium")
-        rate = 55;
-
-
-    if (difficulty === "hard")
-        rate = 38;
-
-
-    if (spawnTimer < rate)
-        return;
-
-
-    spawnTimer = 0;
-
-
-    const obstacle =
-        document.createElement("div");
-
-
-    obstacle.className =
-        "obstacle";
-
-
-    const random =
-        Math.random();
-
-
-    if (random < 0.20) {
-
-        obstacle.textContent = "🛻";
-
-        obstacle.dataset.type =
-            "vehicle";
-
-    }
-
-    else if (random < 0.40) {
-
-        obstacle.textContent = "🚛";
-
-        obstacle.dataset.type =
-            "vehicle";
-
-    }
-
-    else if (random < 0.60) {
-
-        obstacle.textContent = "🚚";
-
-        obstacle.dataset.type =
-            "vehicle";
-
-    }
-
-    else if (random < 0.82) {
-
-        obstacle.textContent = "🚧";
-
-        obstacle.dataset.type =
-            "barrier";
-
-    }
-
-    else {
-
-        obstacle.textContent = "🕳️";
-
-        obstacle.classList.add(
-            "pothole"
-        );
-
-        obstacle.dataset.type =
-            "pothole";
+        lastSpawn = time;
     }
 
 
-    const roadLeft =
-        game.clientWidth * 0.10;
+    obstacles.forEach(o => {
 
-    const roadWidth =
-        game.clientWidth * 0.80;
+        o.y += speed * dt / 16;
 
-
-    const lane =
-        Math.floor(
-            Math.random() * 3
-        );
+        o.el.style.top =
+            o.y + "px";
 
 
-    const laneWidth =
-        roadWidth / 3;
+        if(!o.hit && collision(player,o.el)){
 
+            o.hit = true;
 
-    obstacle.x =
-        roadLeft +
-        lane * laneWidth +
-        laneWidth / 2 -
-        31;
-
-
-    obstacle.y = 50;
-
-
-    obstacle.style.left =
-        obstacle.x + "px";
-
-    obstacle.style.top =
-        obstacle.y + "px";
-
-
-    game.appendChild(
-        obstacle
-    );
-
-
-    obstacles.push(
-        obstacle
-    );
-}
-
-
-/* ================= DI CHUYỂN CHƯỚNG NGẠI ================= */
-
-function moveObstacles() {
-
-    for (
-        let i =
-        obstacles.length - 1;
-        i >= 0;
-        i--
-    ) {
-
-        const obstacle =
-            obstacles[i];
-
-
-        obstacle.y += speed;
-
-
-        obstacle.style.top =
-            obstacle.y + "px";
-
-
-        if (
-            checkCollision(
-                player,
-                obstacle
-            )
-        ) {
-
-            const type =
-                obstacle.dataset.type;
-
-
-            obstacle.remove();
-
-            obstacles.splice(
-                i,
-                1
-            );
-
-
-            /* Ổ GÀ = THUA NGAY */
-
-            if (
-                type ===
-                "pothole"
-            ) {
+            if(o.pothole){
 
                 endGame();
-
                 return;
             }
 
 
-            /* XE / RÀO = MẤT TIM */
+            /*
+              TỈ LỆ VA CHẠM THUA CAO ~80%
+            */
 
-            loseLife();
+            if(Math.random() < 0.80){
 
-            continue;
+                hearts--;
+
+                heartsText.textContent =
+                    hearts + "❤️";
+
+                o.el.style.opacity = "0";
+
+                if(hearts <= 0){
+                    endGame();
+                }
+
+            }else{
+
+                score++;
+
+                scoreText.textContent =
+                    score;
+
+                o.el.style.opacity = ".35";
+            }
         }
 
 
-        if (
-            obstacle.y >
-            game.clientHeight + 100
-        ) {
+        if(o.y > 520){
 
-            obstacle.remove();
+            if(!o.hit && !o.pothole){
 
-            obstacles.splice(
-                i,
-                1
-            );
+                score++;
+
+                scoreText.textContent =
+                    score;
+            }
+
+            o.el.remove();
         }
-    }
-}
+
+    });
 
 
-/* ================= VA CHẠM ================= */
+    obstacles =
+        obstacles.filter(o => o.y <= 520);
 
-function checkCollision(
-    a,
-    b
-) {
-
-    const ar =
-        a.getBoundingClientRect();
-
-    const br =
-        b.getBoundingClientRect();
-
-
-    return !(
-        ar.right - 10 <
-        br.left + 10 ||
-
-        ar.left + 10 >
-        br.right - 10 ||
-
-        ar.bottom - 10 <
-        br.top + 10 ||
-
-        ar.top + 10 >
-        br.bottom - 10
-    );
-}
-
-
-/* ================= MẤT TIM ================= */
-
-function loseLife() {
-
-    lives--;
-
-    livesText.textContent =
-        lives;
-
-
-    player.style.transform =
-        "scale(1.25)";
-
-
-    setTimeout(() => {
-
-        player.style.transform =
-            "scale(1)";
-
-    }, 180);
-
-
-    if (lives <= 0) {
-
-        endGame();
-    }
-}
-
-
-/* ================= XÓA ================= */
-
-function clearObstacles() {
-
-    obstacles.forEach(
-        obstacle =>
-            obstacle.remove()
-    );
-
-    obstacles = [];
-}
-
-
-/* ================= GAME OVER ================= */
-
-function endGame() {
-
-    if (!running)
-        return;
-
-
-    running = false;
-
-
-    bgMusic.pause();
-
-
-    if (musicOn) {
-
-        loseMusic.currentTime = 0;
-
-        loseMusic.play().catch(
-            () => {}
-        );
-    }
-
-
-    const final =
-        Math.floor(score);
-
-
-    finalScore.textContent =
-        final;
-
-
-    if (final > record) {
-
-        record = final;
-
-        localStorage.setItem(
-            "ngonLuaRecord",
-            record
-        );
-    }
-
-
-    finalRecord.textContent =
-        record;
-
-    menuRecord.textContent =
-        record;
-
-
-    gameOver.style.display =
-        "flex";
-}
-
-
-/* ================= CHƠI LẠI ================= */
-
-function restartGame() {
-
-    loseMusic.pause();
-
-    loseMusic.currentTime = 0;
-
-    gameOver.style.display =
-        "none";
-
-    startGame();
+    requestAnimationFrame(loop);
 }
 
 
 /* ================= PAUSE ================= */
 
-function openPause() {
+function pauseGame(){
 
-    if (!running)
-        return;
-
+    if(!gameRunning) return;
 
     paused = true;
 
-    bgMusic.pause();
+    document
+        .getElementById("pauseScreen")
+        .style.display = "flex";
 
-    pauseScreen.style.display =
-        "flex";
+    bgMusic.pause();
 }
 
 
-/* ================= TIẾP TỤC ================= */
-
-function resumeGame() {
+function continueGame(){
 
     paused = false;
 
-    pauseScreen.style.display =
-        "none";
+    document
+        .getElementById("pauseScreen")
+        .style.display = "none";
 
-
-    if (musicOn) {
-
-        bgMusic.play().catch(
-            () => {}
-        );
+    if(musicOn){
+        bgMusic.play().catch(()=>{});
     }
+
+    lastTime = performance.now();
 }
 
 
-/* ================= VỀ MENU ================= */
+function backToMenu(){
 
-function backToMenu() {
-
-    running = false;
-
+    gameRunning = false;
     paused = false;
-
-    clearObstacles();
 
     bgMusic.pause();
 
-    loseMusic.pause();
+    document
+        .getElementById("pauseScreen")
+        .style.display = "none";
 
-    pauseScreen.style.display =
-        "none";
-
-    gameOver.style.display =
-        "none";
-
-    menu.style.display =
-        "flex";
-
-    menuRecord.textContent =
-        record;
+    game.style.display = "none";
+    menu.style.display = "flex";
 }
 
 
-/* ================= ÂM NHẠC ================= */
+/* ================= GAME OVER ================= */
 
-function toggleMusic() {
+function endGame(){
 
-    musicOn =
-        !musicOn;
+    if(!gameRunning) return;
+
+    gameRunning = false;
+
+    bgMusic.pause();
+
+    if(musicOn){
+
+        endMusic.currentTime = 0;
+
+        endMusic.play().catch(()=>{});
+    }
+
+    document
+        .getElementById("finalScore")
+        .textContent = score;
+
+    document
+        .getElementById("gameOver")
+        .style.display = "flex";
 
 
-    const menuButton =
-        document.getElementById(
-            "menuMusic"
+    let oldRecord =
+        Number(localStorage.getItem("ngonLuaRecord") || 0);
+
+    if(score > oldRecord){
+
+        localStorage.setItem(
+            "ngonLuaRecord",
+            score
         );
 
-    const gameButton =
-        document.getElementById(
-            "gameMusic"
-        );
+        document
+            .getElementById("menuRecord")
+            .textContent = score;
 
-
-    if (!musicOn) {
-
-        bgMusic.pause();
-
-        loseMusic.pause();
-
-        menuButton.textContent =
-            "🔇 TẮT";
-
-        gameButton.textContent =
-            "🔇";
-
-    } else {
-
-        menuButton.textContent =
-            "🔊 BẬT";
-
-        gameButton.textContent =
-            "🔊";
-
-
-        if (running && !paused) {
-
-            bgMusic.play().catch(
-                () => {}
-            );
-        }
     }
 }
 
 
-/* ================= DI CHUYỂN BẰNG CHẠM ================= */
+/* ================= RESTART ================= */
 
-/*
-    Chạm vào xe rồi kéo:
-    trái / phải / lên / xuống
-*/
+function restartGame(){
 
-player.addEventListener(
-    "pointerdown",
-    function(e) {
+    endMusic.pause();
 
-        if (!running || paused)
-            return;
+    document
+        .getElementById("gameOver")
+        .style.display = "none";
 
-        dragging = true;
-
-        player.setPointerCapture(
-            e.pointerId
-        );
-    }
-);
+    startGame();
+}
 
 
-player.addEventListener(
-    "pointermove",
-    function(e) {
+/* ================= RECORD ================= */
 
-        if (
-            !dragging ||
-            !running ||
-            paused
-        )
-            return;
-
-
-        const rect =
-            game.getBoundingClientRect();
-
-
-        playerX =
-            e.clientX -
-            rect.left -
-            32;
-
-
-        playerY =
-            e.clientY -
-            rect.top -
-            38;
-
-
-        const minX =
-            game.clientWidth * 0.10 + 5;
-
-        const maxX =
-            game.clientWidth * 0.90 - 70;
-
-
-        const minY = 60;
-
-        const maxY =
-            game.clientHeight - 125;
-
-
-        playerX =
-            Math.max(
-                minX,
-                Math.min(
-                    maxX,
-                    playerX
-                )
-            );
-
-
-        playerY =
-            Math.max(
-                minY,
-                Math.min(
-                    maxY,
-                    playerY
-                )
-            );
-
-
-        player.style.left =
-            playerX + "px";
-
-        player.style.top =
-            playerY + "px";
-    }
-);
-
-
-player.addEventListener(
-    "pointerup",
-    function() {
-
-        dragging = false;
-    }
-);
-
-
-player.addEventListener(
-    "pointercancel",
-    function() {
-
-        dragging = false;
-    }
-);
-
-
-/* ================= KHỞI TẠO XE ================= */
-
-selectCar("red");
-
-selectDifficulty("easy");
+document
+    .getElementById("menuRecord")
+    .textContent =
+    localStorage.getItem("ngonLuaRecord") || 0;
 
 </script>
+
+</div>
 
 </body>
 </html>
