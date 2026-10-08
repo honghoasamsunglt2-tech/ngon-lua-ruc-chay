@@ -36,9 +36,15 @@ html,body{
     margin:auto;
     position:relative;
     overflow:hidden;
+
     background:
-        radial-gradient(circle at center,#321000,#080808 70%);
+        radial-gradient(
+            circle at center,
+            #321000,
+            #080808 70%
+        );
 }
+
 
 /* ================= MENU ================= */
 
@@ -84,12 +90,14 @@ html,body{
 }
 
 @keyframes heartbeat{
-    0%{transform:scale(1);}
-    15%{transform:scale(1.08);}
-    30%{transform:scale(1);}
-    45%{transform:scale(1.06);}
-    60%{transform:scale(1);}
-    100%{transform:scale(1);}
+
+    0%{transform:scale(1)}
+    15%{transform:scale(1.08)}
+    30%{transform:scale(1)}
+    45%{transform:scale(1.06)}
+    60%{transform:scale(1)}
+    100%{transform:scale(1)}
+
 }
 
 .subtitle{
@@ -105,6 +113,7 @@ html,body{
     gap:12px;
 
     background:#3b1000dd;
+
     border:2px solid #a93200;
     border-radius:18px;
 
@@ -117,13 +126,15 @@ html,body{
 .musicButton{
     border:none;
     border-radius:12px;
+
     padding:9px 18px;
 
-    background:linear-gradient(
-        135deg,
-        #ff9d00,
-        #ff2600
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #ff9d00,
+            #ff2600
+        );
 
     color:white;
     font-size:17px;
@@ -158,11 +169,12 @@ html,body{
 }
 
 .diffButton.selected{
-    background:linear-gradient(
-        135deg,
-        #ffad00,
-        #ff2700
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #ffad00,
+            #ff2700
+        );
 
     border-color:#ffd36a;
 
@@ -179,6 +191,7 @@ html,body{
 
 .carButton{
     flex:1;
+
     padding:13px 5px;
 
     border:2px solid #555;
@@ -192,11 +205,12 @@ html,body{
 }
 
 .carButton.selected{
-    background:linear-gradient(
-        135deg,
-        #ffad00,
-        #ff2700
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #ffad00,
+            #ff2700
+        );
 
     border-color:#ffd36a;
 
@@ -212,11 +226,12 @@ html,body{
     border:none;
     border-radius:18px;
 
-    background:linear-gradient(
-        90deg,
-        #ff8a00,
-        #e90000
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #ff8a00,
+            #e90000
+        );
 
     color:white;
 
@@ -230,75 +245,15 @@ html,body{
     margin-top:16px;
 
     background:#00000077;
+
     padding:8px 18px;
 
     border-radius:14px;
 
     font-size:18px;
-}
-
-/* ================= TOP BAR ================= */
-
-#topBar{
-    position:absolute;
-
-    top:0;
-    left:0;
-    right:0;
-
-    height:62px;
-
-    z-index:50;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:7px 10px;
-
-    pointer-events:none;
-
-    background:#050505ee;
-}
-
-.leftInfo{
-    display:flex;
-    gap:7px;
-    align-items:center;
-}
-
-.infoBox{
-    background:#000000cc;
-
-    border-radius:13px;
-
-    padding:8px 11px;
-
-    font-size:17px;
-    font-weight:bold;
-}
-
-.topRight{
-    display:flex;
-    gap:7px;
-    align-items:center;
-}
-
-.topButton{
-    pointer-events:auto;
-
-    width:45px;
-    height:42px;
-
-    border:none;
-    border-radius:11px;
-
-    background:#000000cc;
-
     color:white;
-
-    font-size:23px;
 }
+
 
 /* ================= ROAD ================= */
 
@@ -308,12 +263,8 @@ html,body{
     left:10%;
     width:80%;
 
-    /*
-       ĐƯỜNG ĐUA NGẮN LẠI
-       để nhìn thấy cả top bar + nút điều khiển
-    */
-    top:70px;
-    height:525px;
+    top:58px;
+    bottom:115px;
 
     background:
         linear-gradient(
@@ -332,15 +283,13 @@ html,body{
     overflow:hidden;
 }
 
-/* 3 LÀN */
-
 .laneLine{
     position:absolute;
 
     top:-120px;
 
     width:5px;
-    height:75px;
+    height:70px;
 
     background:white;
 
@@ -359,6 +308,7 @@ html,body{
 }
 
 @keyframes roadMove{
+
     from{
         transform:translateY(-120px);
     }
@@ -366,7 +316,9 @@ html,body{
     to{
         transform:translateY(700px);
     }
+
 }
+
 
 /* ================= PLAYER ================= */
 
@@ -386,10 +338,12 @@ html,body{
 
     touch-action:none;
 
-    filter:drop-shadow(
-        0 5px 5px #000
-    );
+    filter:
+        drop-shadow(
+            0 5px 5px #000
+        );
 }
+
 
 /* ================= OBSTACLE ================= */
 
@@ -412,80 +366,151 @@ html,body{
     font-size:48px;
 }
 
-/* ================= NÚT DI CHUYỂN ================= */
+
+/* ================= TOP BAR ================= */
+
+#topBar{
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:58px;
+
+    z-index:50;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:7px 10px;
+
+    pointer-events:none;
+}
+
+.leftInfo{
+    display:flex;
+    gap:7px;
+    align-items:center;
+}
+
+.infoBox{
+    background:#000000dd;
+
+    border-radius:13px;
+
+    padding:8px 11px;
+
+    font-size:18px;
+    font-weight:bold;
+
+    color:white;
+}
+
+#lives{
+    color:#ff2222;
+    font-size:20px;
+}
+
+.topRight{
+    display:flex;
+    gap:7px;
+    align-items:center;
+}
+
+.topButton{
+    pointer-events:auto;
+
+    width:43px;
+    height:40px;
+
+    border:none;
+    border-radius:11px;
+
+    background:#000000dd;
+
+    color:white;
+
+    font-size:21px;
+}
+
+
+/* ================= DI CHUYỂN ================= */
 
 #controls{
     position:absolute;
 
-    left:0;
-    right:0;
+    left:50%;
+    bottom:8px;
 
-    bottom:18px;
-
-    height:125px;
+    transform:translateX(-50%);
 
     z-index:60;
 
-    display:flex;
+    width:220px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,60px);
+
+    grid-template-rows:52px 52px;
+
+    gap:5px;
+
     justify-content:center;
-    align-items:center;
-
-    pointer-events:auto;
-}
-
-.controlPad{
-    width:180px;
-    height:115px;
-
-    position:relative;
 }
 
 .moveButton{
-    position:absolute;
+    border:2px solid #ff3b00;
 
-    width:55px;
-    height:48px;
+    border-radius:14px;
 
-    border:2px solid #ff4b16;
-    border-radius:13px;
-
-    background:#170d0acc;
+    background:
+        linear-gradient(
+            135deg,
+            #401000,
+            #180000
+        );
 
     color:white;
 
-    font-size:25px;
+    font-size:27px;
+
     font-weight:bold;
 
     box-shadow:
-        0 0 12px #ff350055;
+        0 0 10px #ff260055;
 
     touch-action:none;
+
+    -webkit-tap-highlight-color:transparent;
 }
 
 .moveButton:active{
-    background:#ff4b16;
-    transform:scale(.94);
+    background:#ff3700;
+    transform:scale(.95);
 }
 
 .up{
-    top:0;
-    left:62px;
-}
-
-.down{
-    bottom:0;
-    left:62px;
+    grid-column:2;
 }
 
 .left{
-    top:34px;
-    left:0;
+    grid-column:1;
+    grid-row:2;
+}
+
+.down{
+    grid-column:2;
+    grid-row:2;
 }
 
 .right{
-    top:34px;
-    right:0;
+    grid-column:3;
+    grid-row:2;
 }
+
 
 /* ================= PAUSE ================= */
 
@@ -550,6 +575,7 @@ html,body{
     color:white;
 }
 
+
 /* ================= GAME OVER ================= */
 
 #gameOver{
@@ -564,20 +590,13 @@ html,body{
     align-items:center;
     justify-content:center;
 
-    background:#000000bd;
+    background:#000000c7;
 }
 
-/*
-   GAME OVER LUÔN RƠI VÀO CHÍNH GIỮA
-*/
-
 .gameOverPanel{
-    width:100%;
     text-align:center;
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    width:100%;
 
     animation:
         fallGameOver
@@ -590,35 +609,35 @@ html,body{
 
     0%{
         transform:
-            translateY(-500px)
-            rotate(-10deg);
+            translateY(-520px)
+            rotate(-8deg);
 
         opacity:0;
     }
 
-    45%{
+    50%{
         transform:
             translateY(30px)
-            rotate(7deg);
+            rotate(6deg);
 
         opacity:1;
     }
 
-    60%{
+    65%{
         transform:
-            translateY(-18px)
-            rotate(-5deg);
+            translateY(-15px)
+            rotate(-4deg);
     }
 
-    75%{
+    78%{
         transform:
-            translateY(10px)
+            translateY(8px)
             rotate(3deg);
     }
 
-    88%{
+    90%{
         transform:
-            translateY(-4px)
+            translateY(-3px)
             rotate(-1deg);
     }
 
@@ -627,10 +646,11 @@ html,body{
             translateY(0)
             rotate(0);
     }
+
 }
 
 .gameOverTitle{
-    font-size:48px;
+    font-size:52px;
 
     font-weight:900;
 
@@ -657,11 +677,11 @@ html,body{
     }
 
     25%{
-        transform:translateX(-9px);
+        transform:translateX(-10px);
     }
 
     50%{
-        transform:translateX(9px);
+        transform:translateX(10px);
     }
 
     75%{
@@ -671,6 +691,7 @@ html,body{
     100%{
         transform:translateX(0);
     }
+
 }
 
 .scoreFinal{
@@ -678,13 +699,9 @@ html,body{
 
     font-size:20px;
 
-    margin:12px 0 18px;
-}
+    line-height:1.6;
 
-.gameOverButtons{
-    display:flex;
-    justify-content:center;
-    gap:8px;
+    margin:10px 0 18px;
 }
 
 .gameOverButton{
@@ -693,6 +710,8 @@ html,body{
     border-radius:13px;
 
     padding:13px 20px;
+
+    margin:5px;
 
     font-size:16px;
 
@@ -708,6 +727,7 @@ html,body{
     background:#333;
     color:white;
 }
+
 
 /* ================= RESPONSIVE ================= */
 
@@ -730,6 +750,7 @@ html,body{
 
 <div id="game">
 
+
 <!-- ================= MENU ================= -->
 
 <div id="menu">
@@ -745,7 +766,9 @@ html,body{
 
     <div class="musicBox">
 
-        <span>🎵 NHẠC</span>
+        <span>
+            🎵 NHẠC
+        </span>
 
         <button
             class="musicButton"
@@ -849,22 +872,22 @@ html,body{
 
 <div id="topBar">
 
-    <div class="infoBox">
-    <span id="lives">3❤️</span>
-</div>
+    <div class="leftInfo">
 
         <div class="infoBox">
+            <span id="lives">3❤️</span>
+        </div>
 
-            🎵
+        <div class="infoBox">
 
             <button
                 id="gameMusic"
                 onclick="toggleMusic()"
                 style="
-                border:none;
-                background:none;
-                color:white;
-                font-size:18px;
+                    border:none;
+                    background:none;
+                    color:white;
+                    font-size:18px;
                 "
             >
                 🔊
@@ -892,41 +915,37 @@ html,body{
 </div>
 
 
-<!-- ================= NÚT DI CHUYỂN ================= -->
+<!-- ================= DI CHUYỂN ================= -->
 
 <div id="controls">
 
-    <div class="controlPad">
+    <button
+        class="moveButton up"
+        id="upBtn"
+    >
+        ⬆️
+    </button>
 
-        <button
-            class="moveButton up"
-            id="upBtn"
-        >
-            ↑
-        </button>
+    <button
+        class="moveButton left"
+        id="leftBtn"
+    >
+        ⬅️
+    </button>
 
-        <button
-            class="moveButton left"
-            id="leftBtn"
-        >
-            ←
-        </button>
+    <button
+        class="moveButton down"
+        id="downBtn"
+    >
+        ⬇️
+    </button>
 
-        <button
-            class="moveButton right"
-            id="rightBtn"
-        >
-            →
-        </button>
-
-        <button
-            class="moveButton down"
-            id="downBtn"
-        >
-            ↓
-        </button>
-
-    </div>
+    <button
+        class="moveButton right"
+        id="rightBtn"
+    >
+        ➡️
+    </button>
 
 </div>
 
@@ -982,23 +1001,19 @@ html,body{
 
         </div>
 
-        <div class="gameOverButtons">
+        <button
+            class="gameOverButton again"
+            onclick="restartGame()"
+        >
+            🔄 CHƠI LẠI
+        </button>
 
-            <button
-                class="gameOverButton again"
-                onclick="restartGame()"
-            >
-                🔄 CHƠI LẠI
-            </button>
-
-            <button
-                class="gameOverButton menuBack"
-                onclick="backToMenu()"
-            >
-                🏠 VỀ MENU
-            </button>
-
-        </div>
+        <button
+            class="gameOverButton menuBack"
+            onclick="backToMenu()"
+        >
+            🏠 VỀ MENU
+        </button>
 
     </div>
 
@@ -1012,25 +1027,20 @@ html,body{
     loop
     preload="auto"
 >
-
     <source
         src="https://raw.githubusercontent.com/honghoasamsunglt2-tech/ngon-lua-ruc-chay/main/Nh%E1%BA%A1c%20game.mp3"
         type="audio/mpeg"
     >
-
 </audio>
-
 
 <audio
     id="loseMusic"
     preload="auto"
 >
-
     <source
         src="https://raw.githubusercontent.com/honghoasamsunglt2-tech/ngon-lua-ruc-chay/main/Nh%E1%BA%A1c%20game%20k%E1%BA%BFt%20th%C3%BAc.mp3"
         type="audio/mpeg"
     >
-
 </audio>
 
 
@@ -1092,13 +1102,12 @@ let obstacles = [];
 let spawnTimer = 0;
 
 let difficulty = "easy";
+
 let selectedCar = "red";
 
 let speed = 3.5;
 
 let musicOn = true;
-
-let dragging = false;
 
 let record =
     Number(
@@ -1108,14 +1117,6 @@ let record =
     );
 
 menuRecord.textContent = record;
-
-
-/* ================= NÚT GIỮ ================= */
-
-let movingLeft = false;
-let movingRight = false;
-let movingUp = false;
-let movingDown = false;
 
 
 /* ================= XE ================= */
@@ -1132,7 +1133,6 @@ function selectCar(car){
         .getElementById("yellowCar")
         .classList.remove("selected");
 
-
     if(car === "red"){
 
         document
@@ -1148,7 +1148,9 @@ function selectCar(car){
             .classList.add("selected");
 
         player.textContent = "🚕";
+
     }
+
 }
 
 
@@ -1178,6 +1180,7 @@ function selectDifficulty(level){
         document
             .getElementById("easyButton")
             .classList.add("selected");
+
     }
 
 
@@ -1188,6 +1191,7 @@ function selectDifficulty(level){
         document
             .getElementById("mediumButton")
             .classList.add("selected");
+
     }
 
 
@@ -1198,7 +1202,9 @@ function selectDifficulty(level){
         document
             .getElementById("hardButton")
             .classList.add("selected");
+
     }
+
 }
 
 
@@ -1218,9 +1224,8 @@ function startGame(){
 
     clearObstacles();
 
-    livesText.textContent = "3";
+    livesText.textContent = "3❤️";
     scoreText.textContent = "0";
-
 
     player.textContent =
         selectedCar === "red"
@@ -1231,9 +1236,8 @@ function startGame(){
     playerX =
         game.clientWidth / 2 - 32;
 
-
     playerY =
-        480;
+        game.clientHeight - 200;
 
 
     player.style.left =
@@ -1254,12 +1258,14 @@ function startGame(){
         bgMusic.play().catch(
             () => {}
         );
+
     }
 
 
     requestAnimationFrame(
         gameLoop
     );
+
 }
 
 
@@ -1278,10 +1284,9 @@ function gameLoop(){
         );
 
         return;
+
     }
 
-
-    movePlayerByButtons();
 
     moveObstacles();
 
@@ -1297,189 +1302,8 @@ function gameLoop(){
     requestAnimationFrame(
         gameLoop
     );
+
 }
-
-
-/* ================= DI CHUYỂN XE ================= */
-
-function movePlayerByButtons(){
-
-    const moveSpeed = 6;
-
-
-    if(movingLeft)
-        playerX -= moveSpeed;
-
-    if(movingRight)
-        playerX += moveSpeed;
-
-    if(movingUp)
-        playerY -= moveSpeed;
-
-    if(movingDown)
-        playerY += moveSpeed;
-
-
-    const minX =
-        game.clientWidth * 0.10 + 5;
-
-    const maxX =
-        game.clientWidth * 0.90 - 70;
-
-
-    /*
-       XE CHỈ ĐI TRONG PHẦN ĐƯỜNG
-    */
-
-    playerX =
-        Math.max(
-            minX,
-            Math.min(
-                maxX,
-                playerX
-            )
-        );
-
-
-    /*
-       KHÔNG CHO XE ĐI VÀO TOP BAR
-       HOẶC KHU VỰC NÚT
-    */
-
-    const minY = 75;
-
-    const maxY = 520;
-
-
-    playerY =
-        Math.max(
-            minY,
-            Math.min(
-                maxY,
-                playerY
-            )
-        );
-
-
-    player.style.left =
-        playerX + "px";
-
-    player.style.top =
-        playerY + "px";
-}
-
-
-/* ================= NÚT GIỮ ================= */
-
-function setupMoveButton(
-    id,
-    direction
-){
-
-    const button =
-        document.getElementById(id);
-
-
-    button.addEventListener(
-        "pointerdown",
-        function(e){
-
-            e.preventDefault();
-
-            if(direction === "left")
-                movingLeft = true;
-
-            if(direction === "right")
-                movingRight = true;
-
-            if(direction === "up")
-                movingUp = true;
-
-            if(direction === "down")
-                movingDown = true;
-        }
-    );
-
-
-    button.addEventListener(
-        "pointerup",
-        function(e){
-
-            e.preventDefault();
-
-            if(direction === "left")
-                movingLeft = false;
-
-            if(direction === "right")
-                movingRight = false;
-
-            if(direction === "up")
-                movingUp = false;
-
-            if(direction === "down")
-                movingDown = false;
-        }
-    );
-
-
-    button.addEventListener(
-        "pointercancel",
-        function(){
-
-            if(direction === "left")
-                movingLeft = false;
-
-            if(direction === "right")
-                movingRight = false;
-
-            if(direction === "up")
-                movingUp = false;
-
-            if(direction === "down")
-                movingDown = false;
-        }
-    );
-
-
-    button.addEventListener(
-        "pointerleave",
-        function(){
-
-            if(direction === "left")
-                movingLeft = false;
-
-            if(direction === "right")
-                movingRight = false;
-
-            if(direction === "up")
-                movingUp = false;
-
-            if(direction === "down")
-                movingDown = false;
-        }
-    );
-}
-
-
-setupMoveButton(
-    "leftBtn",
-    "left"
-);
-
-setupMoveButton(
-    "rightBtn",
-    "right"
-);
-
-setupMoveButton(
-    "upBtn",
-    "up"
-);
-
-setupMoveButton(
-    "downBtn",
-    "down"
-);
 
 
 /* ================= TẠO CHƯỚNG NGẠI ================= */
@@ -1488,16 +1312,13 @@ function spawnObstacle(){
 
     spawnTimer++;
 
-
     let rate = 75;
-
 
     if(difficulty === "medium")
         rate = 55;
 
-
     if(difficulty === "hard")
-        rate = 38;
+        rate = 42;
 
 
     if(spawnTimer < rate)
@@ -1510,7 +1331,6 @@ function spawnObstacle(){
     const obstacle =
         document.createElement("div");
 
-
     obstacle.className =
         "obstacle";
 
@@ -1522,28 +1342,32 @@ function spawnObstacle(){
     if(random < 0.20){
 
         obstacle.textContent = "🛻";
-        obstacle.dataset.type =
-            "vehicle";
+        obstacle.dataset.type = "vehicle";
 
-    }else if(random < 0.40){
+    }
+
+    else if(random < 0.40){
 
         obstacle.textContent = "🚛";
-        obstacle.dataset.type =
-            "vehicle";
+        obstacle.dataset.type = "vehicle";
 
-    }else if(random < 0.60){
+    }
+
+    else if(random < 0.60){
 
         obstacle.textContent = "🚚";
-        obstacle.dataset.type =
-            "vehicle";
+        obstacle.dataset.type = "vehicle";
 
-    }else if(random < 0.82){
+    }
+
+    else if(random < 0.82){
 
         obstacle.textContent = "🚧";
-        obstacle.dataset.type =
-            "barrier";
+        obstacle.dataset.type = "barrier";
 
-    }else{
+    }
+
+    else{
 
         obstacle.textContent = "🕳️";
 
@@ -1553,6 +1377,7 @@ function spawnObstacle(){
 
         obstacle.dataset.type =
             "pothole";
+
     }
 
 
@@ -1580,8 +1405,7 @@ function spawnObstacle(){
         31;
 
 
-    obstacle.y =
-        75;
+    obstacle.y = 50;
 
 
     obstacle.style.left =
@@ -1599,6 +1423,7 @@ function spawnObstacle(){
     obstacles.push(
         obstacle
     );
+
 }
 
 
@@ -1643,25 +1468,25 @@ function moveObstacles(){
             );
 
 
-            if(
-                type === "pothole"
-            ){
+            if(type === "pothole"){
 
                 endGame();
 
                 return;
+
             }
 
 
             loseLife();
 
             continue;
+
         }
 
 
         if(
             obstacle.y >
-            560
+            game.clientHeight + 100
         ){
 
             obstacle.remove();
@@ -1670,8 +1495,11 @@ function moveObstacles(){
                 i,
                 1
             );
+
         }
+
     }
+
 }
 
 
@@ -1699,6 +1527,7 @@ function checkCollision(a,b){
         ar.top + 10 >
         br.bottom - 10
     );
+
 }
 
 
@@ -1709,28 +1538,27 @@ function loseLife(){
     lives--;
 
     livesText.textContent =
-        lives;
+        lives + "❤️";
 
 
     player.style.transform =
         "scale(1.25)";
 
 
-    setTimeout(
-        () => {
+    setTimeout(() => {
 
-            player.style.transform =
-                "scale(1)";
+        player.style.transform =
+            "scale(1)";
 
-        },
-        180
-    );
+    },180);
 
 
     if(lives <= 0){
 
         endGame();
+
     }
+
 }
 
 
@@ -1744,6 +1572,7 @@ function clearObstacles(){
     );
 
     obstacles = [];
+
 }
 
 
@@ -1758,12 +1587,6 @@ function endGame(){
     running = false;
 
 
-    movingLeft = false;
-    movingRight = false;
-    movingUp = false;
-    movingDown = false;
-
-
     bgMusic.pause();
 
 
@@ -1774,6 +1597,7 @@ function endGame(){
         loseMusic.play().catch(
             () => {}
         );
+
     }
 
 
@@ -1793,6 +1617,7 @@ function endGame(){
             "ngonLuaRecord",
             record
         );
+
     }
 
 
@@ -1803,28 +1628,9 @@ function endGame(){
         record;
 
 
-    /*
-       RESET ANIMATION
-       để mỗi lần Game Over
-       đều rơi lại từ trên xuống
-    */
-
-    const panel =
-        document.querySelector(
-            ".gameOverPanel"
-        );
-
-
-    panel.style.animation = "none";
-
-    void panel.offsetWidth;
-
-    panel.style.animation =
-        "fallGameOver .9s cubic-bezier(.2,1.6,.4,1) forwards";
-
-
     gameOver.style.display =
         "flex";
+
 }
 
 
@@ -1840,6 +1646,7 @@ function restartGame(){
         "none";
 
     startGame();
+
 }
 
 
@@ -1853,15 +1660,11 @@ function openPause(){
 
     paused = true;
 
-    movingLeft = false;
-    movingRight = false;
-    movingUp = false;
-    movingDown = false;
-
     bgMusic.pause();
 
     pauseScreen.style.display =
         "flex";
+
 }
 
 
@@ -1880,27 +1683,22 @@ function resumeGame(){
         bgMusic.play().catch(
             () => {}
         );
+
     }
+
 }
 
 
-/* ================= VỀ MENU ================= */
+/* ================= MENU ================= */
 
 function backToMenu(){
 
     running = false;
-
     paused = false;
-
-    movingLeft = false;
-    movingRight = false;
-    movingUp = false;
-    movingDown = false;
 
     clearObstacles();
 
     bgMusic.pause();
-
     loseMusic.pause();
 
     pauseScreen.style.display =
@@ -1914,6 +1712,7 @@ function backToMenu(){
 
     menuRecord.textContent =
         record;
+
 }
 
 
@@ -1939,7 +1738,6 @@ function toggleMusic(){
     if(!musicOn){
 
         bgMusic.pause();
-
         loseMusic.pause();
 
         menuButton.textContent =
@@ -1962,12 +1760,18 @@ function toggleMusic(){
             bgMusic.play().catch(
                 () => {}
             );
+
         }
+
     }
+
 }
 
 
 /* ================= KÉO XE ================= */
+
+let dragging = false;
+
 
 player.addEventListener(
     "pointerdown",
@@ -1981,6 +1785,7 @@ player.addEventListener(
         player.setPointerCapture(
             e.pointerId
         );
+
     }
 );
 
@@ -2013,38 +1818,10 @@ player.addEventListener(
             38;
 
 
-        const minX =
-            game.clientWidth * 0.10 + 5;
+        limitPlayer();
 
-        const maxX =
-            game.clientWidth * 0.90 - 70;
+        updatePlayer();
 
-
-        playerX =
-            Math.max(
-                minX,
-                Math.min(
-                    maxX,
-                    playerX
-                )
-            );
-
-
-        playerY =
-            Math.max(
-                75,
-                Math.min(
-                    520,
-                    playerY
-                )
-            );
-
-
-        player.style.left =
-            playerX + "px";
-
-        player.style.top =
-            playerY + "px";
     }
 );
 
@@ -2054,6 +1831,7 @@ player.addEventListener(
     function(){
 
         dragging = false;
+
     }
 );
 
@@ -2063,7 +1841,215 @@ player.addEventListener(
     function(){
 
         dragging = false;
+
     }
+);
+
+
+/* ================= GIỚI HẠN XE ================= */
+
+function limitPlayer(){
+
+    const minX =
+        game.clientWidth * 0.10 + 5;
+
+    const maxX =
+        game.clientWidth * 0.90 - 70;
+
+
+    const minY = 65;
+
+    const maxY =
+        game.clientHeight - 190;
+
+
+    playerX =
+        Math.max(
+            minX,
+            Math.min(
+                maxX,
+                playerX
+            )
+        );
+
+
+    playerY =
+        Math.max(
+            minY,
+            Math.min(
+                maxY,
+                playerY
+            )
+        );
+
+}
+
+
+function updatePlayer(){
+
+    player.style.left =
+        playerX + "px";
+
+    player.style.top =
+        playerY + "px";
+
+}
+
+
+/* ================= NÚT DI CHUYỂN ================= */
+
+let moveLeft = false;
+let moveRight = false;
+let moveUp = false;
+let moveDown = false;
+
+
+function movementLoop(){
+
+    if(
+        running &&
+        !paused
+    ){
+
+        const amount = 7;
+
+
+        if(moveLeft)
+            playerX -= amount;
+
+        if(moveRight)
+            playerX += amount;
+
+        if(moveUp)
+            playerY -= amount;
+
+        if(moveDown)
+            playerY += amount;
+
+
+        limitPlayer();
+
+        updatePlayer();
+
+    }
+
+
+    requestAnimationFrame(
+        movementLoop
+    );
+
+}
+
+
+function holdButton(
+    button,
+    direction
+){
+
+    button.addEventListener(
+        "pointerdown",
+        function(e){
+
+            e.preventDefault();
+
+            if(direction === "left")
+                moveLeft = true;
+
+            if(direction === "right")
+                moveRight = true;
+
+            if(direction === "up")
+                moveUp = true;
+
+            if(direction === "down")
+                moveDown = true;
+
+        }
+    );
+
+
+    button.addEventListener(
+        "pointerup",
+        function(e){
+
+            e.preventDefault();
+
+            if(direction === "left")
+                moveLeft = false;
+
+            if(direction === "right")
+                moveRight = false;
+
+            if(direction === "up")
+                moveUp = false;
+
+            if(direction === "down")
+                moveDown = false;
+
+        }
+    );
+
+
+    button.addEventListener(
+        "pointerleave",
+        function(){
+
+            if(direction === "left")
+                moveLeft = false;
+
+            if(direction === "right")
+                moveRight = false;
+
+            if(direction === "up")
+                moveUp = false;
+
+            if(direction === "down")
+                moveDown = false;
+
+        }
+    );
+
+
+    button.addEventListener(
+        "pointercancel",
+        function(){
+
+            if(direction === "left")
+                moveLeft = false;
+
+            if(direction === "right")
+                moveRight = false;
+
+            if(direction === "up")
+                moveUp = false;
+
+            if(direction === "down")
+                moveDown = false;
+
+        }
+    );
+
+}
+
+
+holdButton(
+    document.getElementById("leftBtn"),
+    "left"
+);
+
+holdButton(
+    document.getElementById("rightBtn"),
+    "right"
+);
+
+holdButton(
+    document.getElementById("upBtn"),
+    "up"
+);
+
+holdButton(
+    document.getElementById("downBtn"),
+    "down"
 );
 
 
@@ -2072,6 +2058,8 @@ player.addEventListener(
 selectCar("red");
 
 selectDifficulty("easy");
+
+movementLoop();
 
 </script>
 
