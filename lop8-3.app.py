@@ -849,11 +849,9 @@ html,body{
 
 <div id="topBar">
 
-    <div class="leftInfo">
-
-        <div class="infoBox">
-            ❤️ <span id="lives">3</span>
-        </div>
+    <div class="infoBox">
+    <span id="lives">3❤️</span>
+</div>
 
         <div class="infoBox">
 
